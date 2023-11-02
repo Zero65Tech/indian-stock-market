@@ -1,0 +1,9 @@
+{
+  "name": "@zero65/market",
+  "version": "1.1.9",
+  "description": "Zero65 Market Util",
+  "main": "src/index.js",
+  "scripts": {},
+  "author": "Zero65 Technologies Pvt. Ltd.",
+  "dependencies": {}
+}
