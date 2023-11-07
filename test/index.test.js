@@ -8,55 +8,63 @@ const {
 } = require('../src/index');
 
 // TESTING .info()
-const symbolsArray = [
-  // PE test cases
-  'BANKNIFTY20NOV23500PE',
-  'BANKNIFTY23APR40000PE',
+const symbolsArrayPE = [
+  'BANKNIFTY20NOV23500PE', 
+  'BANKNIFTY23APR40000PE', 
   'RELIANCE23APR2300PE',
   'M21OCT720PE',
   'COALINDIA21JUL142.5PE',
-  // CE test cases
+];
+const symbolsArrayCE = [
   'RELIANCE23APR2300CE',
-  // FUT test cases
+];
+const symbolsArrayFUT = [
   'RELIANCE23NOVFUT',
 ];
+const symbolsArrayOthers = [
+  'WIPRO',
+  'TCS',
+  'INFY',
+  'RELIANCE'
+];
 
-describe('.symbolsMatch() Testing', () => {
-  symbolsArray.forEach((symb) => {
-    if (symb.endsWith('PE')) {
-      test(`PE testing ${symb}`, () => {
-        expect(info(symb)).toHaveProperty('script');
-        expect(info(symb)).toHaveProperty('expiry');
-        expect(info(symb)).toHaveProperty('strike');
-        expect(info(symb)).toHaveProperty('type');
-      });
-    } else if (symb.endsWith('CE')) {
-      test(`CE testing ${symb}`, () => {
-        expect(info(symb)).toHaveProperty('script');
-        expect(info(symb)).toHaveProperty('expiry');
-        expect(info(symb)).toHaveProperty('strike');
-        expect(info(symb)).toHaveProperty('type');
-      });
-    } else if (symb.endsWith('FUT')) {
-      test(`FUT testing ${symb}`, () => {
-        expect(info(symb)).toHaveProperty('script');
-        expect(info(symb)).toHaveProperty('expiry');
-        expect(info(symb)).toHaveProperty('type');
-      });
-    } else {
-      test(`Others testing ${symb}`, () => {
-        expect(info(symb)).toHaveProperty('script');
-      });
-    }
+describe('.info() Testing', () => {
+  symbolsArrayPE.forEach((pe) => {
+    test(`PE test case - ${pe}`, () => {
+      expect(info(pe)).toHaveProperty('script');
+      expect(info(pe)).toHaveProperty('expiry');
+      expect(info(pe)).toHaveProperty('strike');
+      expect(info(pe)).toHaveProperty('type');
+    });
+  });
+  symbolsArrayCE.forEach((ce) => {
+    test(`CE test case - ${ce}`, () => {
+      expect(info(ce)).toHaveProperty('script');
+      expect(info(ce)).toHaveProperty('expiry');
+      expect(info(ce)).toHaveProperty('strike');
+      expect(info(ce)).toHaveProperty('type');
+    });
+  });
+  symbolsArrayFUT.forEach((fut) => {
+    test(`FUT test case - ${fut}`, () => {
+      expect(info(fut)).toHaveProperty('script');
+      expect(info(fut)).toHaveProperty('expiry');
+      expect(info(fut)).toHaveProperty('type');
+    });
+  });
+  symbolsArrayOthers.forEach((oth) => {
+    test(`Other than PE,CE,FUT test case - ${oth}`, () => {
+      expect(info(oth)).toHaveProperty('script');
+    });
   });
 });
 
-// TESTING .expiryDate()
-const expiryArray = ['20N0V', '23APR', '21OCT', '23DEC'];
+// TESTING .expiry()
+const expiryArray = ['20N0V', '23APR', '21OCT', '23DEC', '11OCT'];
 
-describe('.expiryDate() Testing', () => {
+describe('.expiry() Testing', () => {
   expiryArray.forEach((exp) => {
-    test(`${exp} testcase`, () => {
+    test(`${exp} test case`, () => {
       expect(expiry(exp)).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
