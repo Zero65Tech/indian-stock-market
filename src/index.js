@@ -1,6 +1,6 @@
 const holidays    = require('./holidays.js');
 const specialDays = require('./special-days.js');
-const muhuratDay  = new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24; // GMT
+let muhuratDay  = new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24 + 5.5; // GMT
 
 
 exports.info = (symbol) => {
@@ -54,6 +54,13 @@ exports.isOpen = () => {
     return false;
 
   let [ day, hrs ] = istDayAndHr(date);
+  let dateStr = date.getUTCFullYear()
+  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
+  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
+
+  if(specialDays.indexOf(dateStr) != -1){
+    muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
+  }
   if(day == muhuratDay)
     return hrs >= 18.25 && hrs < 19.25;
   else
@@ -68,6 +75,14 @@ exports.hasOpened = () => {
     return false;
 
   let [ day, hrs ] = istDayAndHr(date);
+  let dateStr = date.getUTCFullYear()
+  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
+  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
+
+  if(specialDays.indexOf(dateStr) != -1){
+    muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
+  }
+
   if(day == muhuratDay)
     return hrs >= 18.25;
   else
@@ -82,6 +97,15 @@ exports.hasClosed = () => {
     return false;
 
   let [ day, hrs ] = istDayAndHr(date);
+
+  let dateStr = date.getUTCFullYear()
+  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
+  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
+
+  if(specialDays.indexOf(dateStr) != -1){
+    muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
+  }
+  
   if(day == muhuratDay)
     return hrs >= 19.25;
   else
