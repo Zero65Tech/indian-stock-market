@@ -5,55 +5,55 @@ const {
   hasOpened,
   hasClosed,
   isHoliday,
-} = require('../src/index');
+} = require("../src/index");
 
 // TESTING .info()
 const symbolsArrayPE = [
-  'BANKNIFTY20NOV23500PE',
-  'BANKNIFTY23APR40000PE',
-  'RELIANCE23APR2300PE',
-  'M21OCT720PE',
-  'COALINDIA21JUL142.5PE',
+  "BANKNIFTY20NOV23500PE",
+  "BANKNIFTY23APR40000PE",
+  "RELIANCE23APR2300PE",
+  "M21OCT720PE",
+  "COALINDIA21JUL142.5PE",
 ];
-const symbolsArrayCE = ['RELIANCE23APR2300CE'];
-const symbolsArrayFUT = ['RELIANCE23NOVFUT'];
-const symbolsArrayOthers = ['WIPRO', 'TCS', 'INFY', 'RELIANCE'];
+const symbolsArrayCE = ["RELIANCE23APR2300CE"];
+const symbolsArrayFUT = ["RELIANCE23NOVFUT"];
+const symbolsArrayOthers = ["WIPRO", "TCS", "INFY", "RELIANCE"];
 
-describe('.info() Testing', () => {
+describe(".info() Testing", () => {
   symbolsArrayPE.forEach((pe) => {
     test(`PE test case - ${pe}`, () => {
-      expect(info(pe)).toHaveProperty('script');
-      expect(info(pe)).toHaveProperty('expiry');
-      expect(info(pe)).toHaveProperty('strike');
-      expect(info(pe)).toHaveProperty('type');
+      expect(info(pe)).toHaveProperty("script");
+      expect(info(pe)).toHaveProperty("expiry");
+      expect(info(pe)).toHaveProperty("strike");
+      expect(info(pe)).toHaveProperty("type");
     });
   });
   symbolsArrayCE.forEach((ce) => {
     test(`CE test case - ${ce}`, () => {
-      expect(info(ce)).toHaveProperty('script');
-      expect(info(ce)).toHaveProperty('expiry');
-      expect(info(ce)).toHaveProperty('strike');
-      expect(info(ce)).toHaveProperty('type');
+      expect(info(ce)).toHaveProperty("script");
+      expect(info(ce)).toHaveProperty("expiry");
+      expect(info(ce)).toHaveProperty("strike");
+      expect(info(ce)).toHaveProperty("type");
     });
   });
   symbolsArrayFUT.forEach((fut) => {
     test(`FUT test case - ${fut}`, () => {
-      expect(info(fut)).toHaveProperty('script');
-      expect(info(fut)).toHaveProperty('expiry');
-      expect(info(fut)).toHaveProperty('type');
+      expect(info(fut)).toHaveProperty("script");
+      expect(info(fut)).toHaveProperty("expiry");
+      expect(info(fut)).toHaveProperty("type");
     });
   });
   symbolsArrayOthers.forEach((oth) => {
     test(`Other than PE,CE,FUT test case - ${oth}`, () => {
-      expect(info(oth)).toHaveProperty('script');
+      expect(info(oth)).toHaveProperty("script");
     });
   });
 });
 
 // TESTING .expiry()
-const expiryArray = ['20N0V', '23APR', '21OCT', '23DEC', '11OCT'];
+const expiryArray = ["20N0V", "23APR", "21OCT", "23DEC", "11OCT"];
 
-describe('.expiry() Testing', () => {
+describe(".expiry() Testing", () => {
   expiryArray.forEach((exp) => {
     test(`${exp} test case`, () => {
       expect(expiry(exp)).toMatch(/^\d{4}-\d{2}-\d{2}$/);
@@ -64,22 +64,22 @@ describe('.expiry() Testing', () => {
 // TESTING .isOpen()
 const isopenArrayTrue = [
   // Time in GMT
-  '2023-11-06T03:30:00Z',
-  '2023-11-06T09:59:00Z',
-  '2023-11-06T06:30:00Z',
-  '2020-11-14T12:45:00Z',
-  '2020-02-01T12:45:00Z',
+  "2023-11-06T03:30:00Z",
+  "2023-11-06T09:59:00Z",
+  "2023-11-06T06:30:00Z",
+  "2020-11-14T12:45:00Z",
+  "2020-02-01T12:45:00Z",
 ];
 const isopenArrayFalse = [
   // Time in GMT
-  '2023-11-06T03:29:00Z',
-  '2023-11-06T10:00:00Z',
-  '2023-11-06T11:30:00Z',
-  '2023-10-02T03:30:00Z',
-  '2020-11-14T13:45:00Z',
+  "2023-11-06T03:29:00Z",
+  "2023-11-06T10:00:00Z",
+  "2023-11-06T11:30:00Z",
+  "2023-10-02T03:30:00Z",
+  "2020-11-14T13:45:00Z",
 ];
 
-describe('.isOpen() Testing', () => {
+describe(".isOpen() Testing", () => {
   isopenArrayTrue.forEach((isopentrue) => {
     test(`${isopentrue} GMT should return True (Market Open)`, () => {
       const mockDate = new Date(isopentrue);
@@ -107,10 +107,14 @@ describe('.isOpen() Testing', () => {
 });
 
 // TESTING .hasOpened()
-const hasOpenedArrayTrue = ['2023-11-06T03:30:00Z', '2020-11-14T12:45:00Z', '2020-02-01T12:45:00Z',]; // Time in GMT
-const hasOpenedArrayFalse = ['2023-11-06T03:29:00Z', '2023-10-02T03:30:00Z',]; // Time in GMT
+const hasOpenedArrayTrue = [
+  "2023-11-06T03:30:00Z",
+  "2020-11-14T12:45:00Z",
+  "2020-02-01T12:45:00Z",
+]; // Time in GMT
+const hasOpenedArrayFalse = ["2023-11-06T03:29:00Z", "2023-10-02T03:30:00Z"]; // Time in GMT
 
-describe('.hasOpened() Testing', () => {
+describe(".hasOpened() Testing", () => {
   hasOpenedArrayTrue.forEach((hasopentrue) => {
     test(`${hasopentrue} GMT should return True (Market Opened)`, () => {
       const mockDate = new Date(hasopentrue);
@@ -138,16 +142,16 @@ describe('.hasOpened() Testing', () => {
 });
 
 // TESTING .hasClosed()
-const hasClosedArrayTrue = ['2023-11-06T10:00:00Z', '2020-11-14T13:45:00Z'];
+const hasClosedArrayTrue = ["2023-11-06T10:00:00Z", "2020-11-14T13:45:00Z"];
 const hasClosedArrayFalse = [
   // Time in GMT
-  '2023-11-06T03:30:00Z',
-  '2023-10-02T03:30:00Z',
-  '2020-11-14T12:45:00Z',
-  '2020-02-01T12:45:00Z',
+  "2023-11-06T03:30:00Z",
+  "2023-10-02T03:30:00Z",
+  "2020-11-14T12:45:00Z",
+  "2020-02-01T12:45:00Z",
 ];
 
-describe('.hasClosed() Testing', () => {
+describe(".hasClosed() Testing", () => {
   hasClosedArrayTrue.forEach((istrue) => {
     test(`${istrue} GMT should return True (Market Closed)`, () => {
       const mockDate = new Date(istrue);
@@ -175,10 +179,10 @@ describe('.hasClosed() Testing', () => {
 });
 
 // TESTING .isHoliday()
-const isHolidayArraytrue = ['2023-10-24', '2023-11-04', '2021-08-19'];
-const isHolidayArrayfalse = ['2023-11-12', '2014-03-22'];
+const isHolidayArraytrue = ["2023-10-24", "2023-11-04", "2021-08-19"];
+const isHolidayArrayfalse = ["2023-11-12", "2014-03-22"];
 
-describe('.isHoliday() Testing', () => {
+describe(".isHoliday() Testing", () => {
   isHolidayArraytrue.forEach((holdate) => {
     test(`${holdate} testcase should return true (Holiday)`, () => {
       expect(isHoliday(holdate)).toBeTruthy();
