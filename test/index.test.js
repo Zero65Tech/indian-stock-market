@@ -9,24 +9,15 @@ const {
 
 // TESTING .info()
 const symbolsArrayPE = [
-  'BANKNIFTY20NOV23500PE', 
-  'BANKNIFTY23APR40000PE', 
+  'BANKNIFTY20NOV23500PE',
+  'BANKNIFTY23APR40000PE',
   'RELIANCE23APR2300PE',
   'M21OCT720PE',
   'COALINDIA21JUL142.5PE',
 ];
-const symbolsArrayCE = [
-  'RELIANCE23APR2300CE',
-];
-const symbolsArrayFUT = [
-  'RELIANCE23NOVFUT',
-];
-const symbolsArrayOthers = [
-  'WIPRO',
-  'TCS',
-  'INFY',
-  'RELIANCE'
-];
+const symbolsArrayCE = ['RELIANCE23APR2300CE'];
+const symbolsArrayFUT = ['RELIANCE23NOVFUT'];
+const symbolsArrayOthers = ['WIPRO', 'TCS', 'INFY', 'RELIANCE'];
 
 describe('.info() Testing', () => {
   symbolsArrayPE.forEach((pe) => {
@@ -76,7 +67,8 @@ const isopenArrayTrue = [
   '2023-11-06T03:30:00Z',
   '2023-11-06T09:59:00Z',
   '2023-11-06T06:30:00Z',
-  // '2020-11-14T12:45:00Z', // todo
+  '2020-11-14T12:45:00Z',
+  '2020-02-01T12:45:00Z',
 ];
 const isopenArrayFalse = [
   // Time in GMT
@@ -88,9 +80,9 @@ const isopenArrayFalse = [
 ];
 
 describe('.isOpen() Testing', () => {
-  isopenArrayTrue.forEach((istrue) => {
-    test(`${istrue} GMT should return True (Market Open)`, () => {
-      const mockDate = new Date(istrue);
+  isopenArrayTrue.forEach((isopentrue) => {
+    test(`${isopentrue} GMT should return True (Market Open)`, () => {
+      const mockDate = new Date(isopentrue);
 
       const originalDate = global.Date;
       global.Date = jest.fn(() => mockDate);
@@ -100,9 +92,9 @@ describe('.isOpen() Testing', () => {
       global.Date = originalDate;
     });
   });
-  isopenArrayFalse.forEach((isfalse) => {
-    test(`${isfalse} GMT should return False (Market Close)`, () => {
-      const mockDate = new Date(isfalse);
+  isopenArrayFalse.forEach((isopenfalse) => {
+    test(`${isopenfalse} GMT should return False (Market Close)`, () => {
+      const mockDate = new Date(isopenfalse);
 
       const originalDate = global.Date;
       global.Date = jest.fn(() => mockDate);
@@ -115,13 +107,13 @@ describe('.isOpen() Testing', () => {
 });
 
 // TESTING .hasOpened()
-const hasOpenedArrayTrue = ['2023-11-06T03:30:00Z', '2020-11-14T12:45:00Z']; // Time in GMT
-const hasOpenedArrayFalse = ['2023-11-06T03:29:00Z', '2023-10-02T03:30:00Z']; // Time in GMT
+const hasOpenedArrayTrue = ['2023-11-06T03:30:00Z', '2020-11-14T12:45:00Z', '2020-02-01T12:45:00Z',]; // Time in GMT
+const hasOpenedArrayFalse = ['2023-11-06T03:29:00Z', '2023-10-02T03:30:00Z',]; // Time in GMT
 
 describe('.hasOpened() Testing', () => {
-  hasOpenedArrayTrue.forEach((istrue) => {
-    test(`${istrue} GMT should return True (Market Opened)`, () => {
-      const mockDate = new Date(istrue);
+  hasOpenedArrayTrue.forEach((hasopentrue) => {
+    test(`${hasopentrue} GMT should return True (Market Opened)`, () => {
+      const mockDate = new Date(hasopentrue);
 
       const originalDate = global.Date;
       global.Date = jest.fn(() => mockDate);
@@ -131,9 +123,9 @@ describe('.hasOpened() Testing', () => {
       global.Date = originalDate;
     });
   });
-  hasOpenedArrayFalse.forEach((isfalse) => {
-    test(`${isfalse} GMT should return False (Market Closed)`, () => {
-      const mockDate = new Date(isfalse);
+  hasOpenedArrayFalse.forEach((hasopenfalse) => {
+    test(`${hasopenfalse} GMT should return False (Market Closed)`, () => {
+      const mockDate = new Date(hasopenfalse);
 
       const originalDate = global.Date;
       global.Date = jest.fn(() => mockDate);
@@ -151,7 +143,8 @@ const hasClosedArrayFalse = [
   // Time in GMT
   '2023-11-06T03:30:00Z',
   '2023-10-02T03:30:00Z',
-  // '2020-11-14T12:45:00Z', // todo
+  '2020-11-14T12:45:00Z',
+  '2020-02-01T12:45:00Z',
 ];
 
 describe('.hasClosed() Testing', () => {
