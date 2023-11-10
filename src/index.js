@@ -47,6 +47,12 @@ function istDayAndHr(date) {
   return [ Math.floor(hrs / 24), hrs % 24 ];
 }
 
+function Datestr(date) {
+  return date.getUTCFullYear() 
+  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
+  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
+}
+
 exports.isOpen = () => {
 
   let date = new Date();
@@ -54,11 +60,8 @@ exports.isOpen = () => {
     return false;
 
   let [ day, hrs ] = istDayAndHr(date);
-  let dateStr = date.getUTCFullYear()
-  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
-  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
 
-  if(specialDays.indexOf(dateStr) != -1){
+  if(specialDays.indexOf(Datestr(date)) != -1){
     muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
   }
   if(day == muhuratDay)
@@ -75,11 +78,8 @@ exports.hasOpened = () => {
     return false;
 
   let [ day, hrs ] = istDayAndHr(date);
-  let dateStr = date.getUTCFullYear()
-  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
-  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
 
-  if(specialDays.indexOf(dateStr) != -1){
+  if(specialDays.indexOf(Datestr(date)) != -1){
     muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
   }
 
@@ -98,11 +98,7 @@ exports.hasClosed = () => {
 
   let [ day, hrs ] = istDayAndHr(date);
 
-  let dateStr = date.getUTCFullYear()
-  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
-  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
-
-  if(specialDays.indexOf(dateStr) != -1){
+  if(specialDays.indexOf(Datestr(date)) != -1){
     muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
   }
   
@@ -119,9 +115,7 @@ exports.isHoliday = (date = new Date()) => {
 
   if(typeof date == 'object') {
     date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-    dateStr = date.getUTCFullYear()
-      + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
-      + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
+    dateStr = Datestr(date)
   } else if(typeof date == 'string') {
     date = new Date(date); // GMT
   }
