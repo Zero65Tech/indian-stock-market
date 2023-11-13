@@ -1,6 +1,6 @@
 const holidays    = require('./holidays.js');
 const specialDays = require('./special-days.js');
-let muhuratDay  = new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24 + 5.5; // GMT
+let muhuratDay  = new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24 + 5.5; // IST
 
 
 exports.info = (symbol) => {
