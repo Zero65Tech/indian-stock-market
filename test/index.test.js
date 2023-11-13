@@ -108,10 +108,11 @@ describe(".isOpen() Testing", () => {
 
 // TESTING .hasOpened()
 const hasOpenedArrayTrue = [
+  // Time in GMT
   "2023-11-06T03:30:00Z",
   "2020-11-14T12:45:00Z",
   "2020-02-01T12:45:00Z",
-]; // Time in GMT
+];
 const hasOpenedArrayFalse = ["2023-11-06T03:29:00Z", "2023-10-02T03:30:00Z"]; // Time in GMT
 
 describe(".hasOpened() Testing", () => {
@@ -142,7 +143,7 @@ describe(".hasOpened() Testing", () => {
 });
 
 // TESTING .hasClosed()
-const hasClosedArrayTrue = ["2023-11-06T10:00:00Z", "2020-11-14T13:45:00Z"];
+const hasClosedArrayTrue = ["2023-11-06T10:00:00Z", "2020-11-14T13:45:00Z"]; // Time in GMT
 const hasClosedArrayFalse = [
   // Time in GMT
   "2023-11-06T03:30:00Z",
