@@ -19,6 +19,16 @@ const symbolsArrayCE = ["RELIANCE23APR2300CE"];
 const symbolsArrayFUT = ["RELIANCE23NOVFUT"];
 const symbolsArrayOthers = ["WIPRO", "TCS", "INFY", "RELIANCE"];
 
+describe(".info(NSE-PE)", () => {
+  test('BANKNIFTY20NOV23500PE', () => {
+    let ret = info('BANKNIFTY20NOV23500PE');
+    expect(ret.script).toBe('BANKNIFTY');
+    expect(ret.expiry).toBe('20NOV');
+    expect(ret.strike).toBe(23500);
+    expect(ret.type)  .toBe('PE');
+  });
+});
+
 describe(".info() Testing", () => {
   symbolsArrayPE.forEach((pe) => {
     test(`PE test case - ${pe}`, () => {
