@@ -10,8 +10,7 @@
   },
   "author": "Zero65 Technologies Pvt. Ltd.",
   "devDependencies": {
-    "eslint": "8.53.x",
-    "eslint-config-standard": "17.1.x",
+    "eslint": "8.54.x",
     "jest": "29.7.x",
     "prettier": "3.1.x"
   }

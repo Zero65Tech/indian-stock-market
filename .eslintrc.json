@@ -1,11 +1,10 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
         "es2021": true,
-        "jest": true
+        "jest": true,
+        "node": true
     },
-    "extends": "standard",
+    "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": "latest"
     },
