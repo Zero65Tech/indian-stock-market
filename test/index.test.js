@@ -5,11 +5,30 @@ const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index'
 const infoTestCases = [
 
   /*
-    FO Monthly Expiry:
+
+    FUT & OPT Monthly Expiry:
       Stocks, Nifty, Nifty Bank:
         - Last Thursday of the Month
       Nifty Financial:
         - Last Tuesday of the Month
+
+    FUT Weekly Expiry:
+      - NA
+
+    OPT Weekly Expiry:
+      Stocks:
+        - NA
+      Nifty:
+        - Thursday
+      Nifty Bank:
+        - Wednesday
+      Nifty Financial
+        - Tuesday
+
+    Weekly Expiry Nomenclature:
+      N = November
+      D = December
+
   */
 
 
@@ -25,11 +44,10 @@ const infoTestCases = [
   [ "RELIANCE23JUNFUT", { script: "RELIANCE", exp: "23JUN", expiry:"2023-06-28", type: "FUT" } ], // Wednesday (Thursday Holiday)
   [ "RELIANCE23SEPFUT", { script: "RELIANCE", exp: "23SEP", expiry:"2023-09-28", type: "FUT" } ],
   [ "RELIANCE23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+  [ "RELIANCE23DECFUT", { script: "RELIANCE", exp: "23DEC", expiry:"2023-12-28", type: "FUT" } ],
 
   [ "NIFTY23NOVFUT",     { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-
   [ "BANKNIFTY23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-
   [ "FINNIFTY23NOVFUT",  { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
 
 
@@ -39,15 +57,27 @@ const infoTestCases = [
   [ "WIPRO23NOV400CE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400  , type: "CE" } ],
   [ "WIPRO23NOV402.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "CE" } ],
 
+  [ "NIFTY23D0720000CE", { script: "NIFTY", exp: "23D07", expiry: "2023-12-07", strike: 20000, type: "CE" } ],
+  [ "NIFTY23D1420000CE", { script: "NIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ],
+  [ "NIFTY23D2120000CE", { script: "NIFTY", exp: "23D21", expiry: "2023-12-21", strike: 20000, type: "CE" } ],
+  [ "NIFTY23DEC20000CE", { script: "NIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 20000, type: "CE" } ],
+
+  [ "BANKNIFTY23D0645000CE", { script: "BANKNIFTY", exp: "23D06", expiry: "2023-12-06", strike: 450000, type: "CE" } ],
+  [ "BANKNIFTY23D1345000CE", { script: "BANKNIFTY", exp: "23D13", expiry: "2023-12-13", strike: 450000, type: "CE" } ],
+  [ "BANKNIFTY23D2045000CE", { script: "BANKNIFTY", exp: "23D20", expiry: "2023-12-20", strike: 450000, type: "CE" } ],
+  [ "BANKNIFTY23DEC45000CE", { script: "BANKNIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 450000, type: "CE" } ],
+
+  [ "FINNIFTY23D0520000CE", { script: "FINNIFTY", exp: "23D05", expiry: "2023-12-05", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23D1220000CE", { script: "FINNIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23D1920000CE", { script: "FINNIFTY", exp: "23D19", expiry: "2023-12-19", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23DEC20000CE", { script: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ],
+
+
   // FO · PE
 
-  [ "WIPRO23NOV397.5PE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "PE" } ],
-  [ "WIPRO23NOV400PE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400  , type: "PE" } ],
-  [ "WIPRO23NOV402.5PE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "PE" } ],
-
-  [ "BANKNIFTY23APR40000PE", { script: "BANKNIFTY", exp: "23APR", expiry:"2023-04-29", strike: 40000, type: "PE" } ], // Index, Monthly Expiry
-  [ "BANKNIFTY23D0643000PE", { script: "BANKNIFTY", exp: "23D06", expiry:"2023-12-06", strike: 43000, type: "PE" } ], // Index, ??
-  [ "BANKNIFTY20N0523500PE", { script: "BANKNIFTY", exp: "20N05", expiry:"2020-11-05", strike: 23500, type: "PE" } ], // Index, ??
+  [ "ITC23NOV432.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 432.5, type: "PE" } ],
+  [ "ITC23NOV435PE",   { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435  , type: "PE" } ],
+  [ "ITC23NOV437.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 437.5, type: "PE" } ],
 
 ];
 
