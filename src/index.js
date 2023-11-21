@@ -42,8 +42,8 @@ exports.info = (symbol) => {
     let expiryDate = expiryFind(opt[2] + opt[3])
     return {
       script: opt[1],
-      expiry: opt[2] + opt[3],
-      expiryDate: expiryDate,
+      exp: opt[2] + opt[3],
+      expiry: expiryDate,
       strike: parseFloat(opt[4]),
       type: opt[5],
     };
@@ -53,42 +53,42 @@ exports.info = (symbol) => {
     let expiryDate = expiryFind(fut[2] + fut[3])
     return { 
       script: fut[1], 
-      expiry: fut[2] + fut[3], 
-      expiryDate: expiryDate,
+      exp: fut[2] + fut[3], 
+      expiry: expiryDate,
       type: "FUT" };
   }
   return { script: symbol };
 };
 
-exports.expiry = (expiry) => {
-  let year = 2000 + parseInt(expiry.substring(0, 2));
-  let month = expiry.substring(2);
-  month = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ].indexOf(month);
-  let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
+// exports.expiry = (expiry) => {
+//   let year = 2000 + parseInt(expiry.substring(0, 2));
+//   let month = expiry.substring(2);
+//   month = [
+//     "JAN",
+//     "FEB",
+//     "MAR",
+//     "APR",
+//     "MAY",
+//     "JUN",
+//     "JUL",
+//     "AUG",
+//     "SEP",
+//     "OCT",
+//     "NOV",
+//     "DEC",
+//   ].indexOf(month);
+//   let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
 
-  while (new Date(year, month, day).getDay() != 4) day--;
+//   while (new Date(year, month, day).getDay() != 4) day--;
 
-  while (true) {
-    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
-      day,
-    ).padStart(2, "0")}`;
-    if (holidays[year - 2011].indexOf(date) == -1) return date;
-    day--;
-  }
-};
+//   while (true) {
+//     let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+//       day,
+//     ).padStart(2, "0")}`;
+//     if (holidays[year - 2011].indexOf(date) == -1) return date;
+//     day--;
+//   }
+// };
 
 function istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
