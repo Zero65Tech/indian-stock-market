@@ -34,7 +34,7 @@ for (const [dateTime, bool1, bool2, bool3] of isopenArray) {
       expect(hasClosed()).toBe(bool3)
     })
   })
-};
+}
 
 // TESTING .isHoliday()
 const isHolidayArray = [
