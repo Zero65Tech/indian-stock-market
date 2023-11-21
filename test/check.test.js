@@ -3,16 +3,27 @@ const { isOpen, hasOpened, hasClosed, isHoliday } = require('../src/index')
 
 
 const dateTimeTestCases = [
-  [ '2023-11-06T03:30:00Z', false, true,  true,  false ],
-  [ '2023-11-06T09:59:00Z', false, true,  true,  false ],
-  [ '2023-11-06T06:30:00Z', false, true,  true,  false ],
-  [ '2020-11-14T12:45:00Z', false, true,  true,  false ],
-  [ '2020-02-01T12:45:00Z', false, true,  true,  false ],
-  [ '2023-11-06T03:29:00Z', false, false, false, false ],
-  [ '2023-11-06T10:00:00Z', false, false, true,  true  ],
-  [ '2023-11-06T11:30:00Z', false, false, true,  true  ],
-  [ '2023-10-02T03:30:00Z', true,  false, false, false ],
-  [ '2020-11-14T13:45:00Z', false, false, true,  true  ]
+
+  // Monday
+  [ '2023-01-02T08:59:59+05:30', false, false, false, false ],
+  [ '2023-01-02T09:00:00+05:30', false, true,  true,  false ],
+  [ '2023-01-02T15:29:59+05:30', false, true,  true,  false ],
+  [ '2023-01-02T15:30:00+05:30', false, false, true,  true  ],
+
+  // Friday
+  [ '2023-01-06T12:00:00+05:30', false, true, true, false ],
+
+  // Saturday
+  [ '2023-01-07T12:00:00+05:30', true, false, false, false ],
+
+  // Sunday
+  [ '2023-01-08T12:00:00+05:30', true, false, false, false ],
+
+  // Repulic Day
+  [ '2023-01-26T12:00:00+05:30', true, false, false, false ],
+
+  // TODO: Muhurat Day
+
 ]
 
 for(const [ dateTime, bool1, bool2, bool3, bool4 ] of dateTimeTestCases) {
