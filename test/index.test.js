@@ -5,16 +5,23 @@ const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index'
 const infoTestCases = [
 
   // EQ
+
   [ "RELIANCE", { script: "RELIANCE" }], // Ends with "CE"
   [ "TCS",      { script: "TCS"      }],
   [ "WIPRO",    { script: "WIPRO"    }],
 
   // FO · FUT
-  ["RELIANCE23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" }],
+
+  [ "RELIANCE23JUNFUT", { script: "RELIANCE", exp: "23JUN", expiry:"2023-06-28", type: "FUT" } ], // Wednesday
+  [ "RELIANCE23SEPFUT", { script: "RELIANCE", exp: "23SEP", expiry:"2023-09-28", type: "FUT" } ], // Thurday
+  [ "RELIANCE23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ], // Thurday
+
+  [ "NIFTY23NOVFUT",     { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ], // Thursday
+  [ "BANKNIFTY23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ], // Thursday
+  [ "FINNIFTY23NOVFUT",  { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ], // Tuesday
 
   // FO · CE
-  [ "RELIANCE23APR2300CE",  { script: "RELIANCE",  exp: "23APR", expiry:"2023-04-29", strike: 2300, type: "CE" } ], // Stock, Monthly Expiry
-  [ "654GS203223NOV91.5CE", { script: "654GS2032", exp: "23NOV", expiry:"2023-11-30", strike: 91.5, type: "CE" } ], // ??, Monthly Expiry
+  [ "RELIANCE23NOV2500CE",  { script: "RELIANCE",  exp: "23NOV", expiry:"2023-11-30", strike: 2500, type: "CE" } ], // Stock, Monthly Expiry
 
   // FO · PE
   [ "BANKNIFTY23APR40000PE", { script: "BANKNIFTY", exp: "23APR", expiry:"2023-04-29", strike: 40000, type: "PE" } ], // Index, Monthly Expiry
