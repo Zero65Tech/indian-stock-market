@@ -62,10 +62,10 @@ const infoTestCases = [
   [ "NIFTY23D2120000CE", { script: "NIFTY", exp: "23D21", expiry: "2023-12-21", strike: 20000, type: "CE" } ],
   [ "NIFTY23DEC20000CE", { script: "NIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 20000, type: "CE" } ],
 
-  [ "BANKNIFTY23D0645000CE", { script: "BANKNIFTY", exp: "23D06", expiry: "2023-12-06", strike: 450000, type: "CE" } ],
-  [ "BANKNIFTY23D1345000CE", { script: "BANKNIFTY", exp: "23D13", expiry: "2023-12-13", strike: 450000, type: "CE" } ],
-  [ "BANKNIFTY23D2045000CE", { script: "BANKNIFTY", exp: "23D20", expiry: "2023-12-20", strike: 450000, type: "CE" } ],
-  [ "BANKNIFTY23DEC45000CE", { script: "BANKNIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 450000, type: "CE" } ],
+  [ "BANKNIFTY23D0645000CE", { script: "BANKNIFTY", exp: "23D06", expiry: "2023-12-06", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23D1345000CE", { script: "BANKNIFTY", exp: "23D13", expiry: "2023-12-13", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23D2045000CE", { script: "BANKNIFTY", exp: "23D20", expiry: "2023-12-20", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23DEC45000CE", { script: "BANKNIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 45000, type: "CE" } ],
 
   [ "FINNIFTY23D0520000CE", { script: "FINNIFTY", exp: "23D05", expiry: "2023-12-05", strike: 20000, type: "CE" } ],
   [ "FINNIFTY23D1220000CE", { script: "FINNIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ],
