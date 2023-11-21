@@ -1,4 +1,4 @@
-const { info, expiry } = require("../src/index");
+const { info, expiry } = require('../src/index')
 
 /*
 
