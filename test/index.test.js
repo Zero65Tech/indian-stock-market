@@ -4,30 +4,50 @@ const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index'
 
 const infoTestCases = [
 
+  /*
+    FO Monthly Expiry:
+      Stocks, Nifty, Nifty Bank:
+        - Last Thursday of the Month
+      Nifty Financial:
+        - Last Tuesday of the Month
+  */
+
+
   // EQ
 
   [ "RELIANCE", { script: "RELIANCE" }], // Ends with "CE"
   [ "TCS",      { script: "TCS"      }],
   [ "WIPRO",    { script: "WIPRO"    }],
 
+
   // FO · FUT
 
-  [ "RELIANCE23JUNFUT", { script: "RELIANCE", exp: "23JUN", expiry:"2023-06-28", type: "FUT" } ], // Wednesday
-  [ "RELIANCE23SEPFUT", { script: "RELIANCE", exp: "23SEP", expiry:"2023-09-28", type: "FUT" } ], // Thurday
-  [ "RELIANCE23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ], // Thurday
+  [ "RELIANCE23JUNFUT", { script: "RELIANCE", exp: "23JUN", expiry:"2023-06-28", type: "FUT" } ], // Wednesday (Thursday Holiday)
+  [ "RELIANCE23SEPFUT", { script: "RELIANCE", exp: "23SEP", expiry:"2023-09-28", type: "FUT" } ],
+  [ "RELIANCE23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
 
-  [ "NIFTY23NOVFUT",     { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ], // Thursday
-  [ "BANKNIFTY23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ], // Thursday
-  [ "FINNIFTY23NOVFUT",  { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ], // Tuesday
+  [ "NIFTY23NOVFUT",     { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+
+  [ "BANKNIFTY23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+
+  [ "FINNIFTY23NOVFUT",  { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
+
 
   // FO · CE
-  [ "RELIANCE23NOV2500CE",  { script: "RELIANCE",  exp: "23NOV", expiry:"2023-11-30", strike: 2500, type: "CE" } ], // Stock, Monthly Expiry
+
+  [ "WIPRO23NOV397.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "CE" } ],
+  [ "WIPRO23NOV400CE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400  , type: "CE" } ],
+  [ "WIPRO23NOV402.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "CE" } ],
 
   // FO · PE
+
+  [ "WIPRO23NOV397.5PE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "PE" } ],
+  [ "WIPRO23NOV400PE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400  , type: "PE" } ],
+  [ "WIPRO23NOV402.5PE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "PE" } ],
+
   [ "BANKNIFTY23APR40000PE", { script: "BANKNIFTY", exp: "23APR", expiry:"2023-04-29", strike: 40000, type: "PE" } ], // Index, Monthly Expiry
   [ "BANKNIFTY23D0643000PE", { script: "BANKNIFTY", exp: "23D06", expiry:"2023-12-06", strike: 43000, type: "PE" } ], // Index, ??
   [ "BANKNIFTY20N0523500PE", { script: "BANKNIFTY", exp: "20N05", expiry:"2020-11-05", strike: 23500, type: "PE" } ], // Index, ??
-  [ "COALINDIA21JUL142.5PE", { script: "COALINDIA", exp: "21JUL", expiry:"2021-07-29", strike: 142.5, type: "PE" } ], // Stock, Monthly Expiry
 
 ];
 
