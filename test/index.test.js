@@ -46,9 +46,9 @@ const infoTestCases = [
   [ "RELIANCE23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
   [ "RELIANCE23DECFUT", { script: "RELIANCE", exp: "23DEC", expiry:"2023-12-28", type: "FUT" } ],
 
-  [ "NIFTY23NOVFUT",     { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-  [ "BANKNIFTY23NOVFUT", { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-  [ "FINNIFTY23NOVFUT",  { script: "RELIANCE", exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
+  [ "NIFTY23NOVFUT",     { script: "NIFTY",     exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+  [ "BANKNIFTY23NOVFUT", { script: "BANKNIFTY", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+  [ "FINNIFTY23NOVFUT",  { script: "FINNIFTY",  exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
 
 
   // FO · CE
