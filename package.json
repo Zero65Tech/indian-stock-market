@@ -1,18 +1,16 @@
 {
+  "author": "Jai Gupta, Zero65 Technologies Pvt. Ltd.",
   "name": "@zero65/indian-stock-exchange",
   "version": "4.0.0",
   "description": "Indian Stock Exchange",
-  "author": "Jai Gupta, Zero65 Technologies Pvt. Ltd.",
   "main": "src/index.js",
   "scripts": {
     "pretest": "npx eslint --fix src test",
-    "test": "jest --coverage test",
-    "posttest": "npx prettier --write src test"
+    "test": "jest --coverage test"
   },
   "devDependencies": {
     "eslint": "8.54.x",
-    "jest": "29.7.x",
-    "prettier": "3.1.x"
+    "jest": "29.7.x"
   },
   "eslintConfig": {
     "env": {
@@ -28,6 +26,5 @@
       "no-constant-condition": "warn",
       "no-useless-escape": "warn"
     }
-  },
-  "prettier": {}
+  }
 }
