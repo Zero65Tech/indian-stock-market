@@ -2,23 +2,10 @@ const holidays = require("./holidays.js");
 const specialDays = require("./special-days.js");
 const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GMT
 
-function expiryFind(expiry) {
-  let year = 2000 + parseInt(expiry.substring(0, 2));
-  let month = expiry.substring(2);
-  month = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ].indexOf(month);
+function expiryDate(yy, mon) {
+
+  let year = 2000 + parseInt(yy);
+  let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
   let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
 
   while (new Date(year, month, day).getDay() != 4) day--;
@@ -30,65 +17,34 @@ function expiryFind(expiry) {
     if (holidays[year - 2011].indexOf(date) == -1) return date;
     day--;
   }
+  
 }
 
 exports.info = (symbol) => {
-  // BANKNIFTY20N0523500PE, BANKNIFTY23APR40000PE
-  // RELIANCE23APR2300CE, RELIANCE23APR2300PE
-  // M21OCT720PE, COALINDIA21JUL142.5PE
+
+  let fut = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
+  if(fut)
+    return {
+      script: fut[1],
+      exp: fut[2] + fut[3],
+      expiry: expiryDate(fut[2], fut[3]),
+      type: "FUT"
+    };
 
   let opt = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
-  if (opt){
-    let expiryDate = expiryFind(opt[2] + opt[3])
+  if(opt)
     return {
       script: opt[1],
       exp: opt[2] + opt[3],
-      expiry: expiryDate,
+      expiry: expiryDate(opt[2], opt[3]),
       strike: parseFloat(opt[4]),
       type: opt[5],
     };
-  }
-  let fut = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
-  if (fut) {
-    let expiryDate = expiryFind(fut[2] + fut[3])
-    return { 
-      script: fut[1], 
-      exp: fut[2] + fut[3], 
-      expiry: expiryDate,
-      type: "FUT" };
-  }
+
   return { script: symbol };
+
 };
 
-// exports.expiry = (expiry) => {
-//   let year = 2000 + parseInt(expiry.substring(0, 2));
-//   let month = expiry.substring(2);
-//   month = [
-//     "JAN",
-//     "FEB",
-//     "MAR",
-//     "APR",
-//     "MAY",
-//     "JUN",
-//     "JUL",
-//     "AUG",
-//     "SEP",
-//     "OCT",
-//     "NOV",
-//     "DEC",
-//   ].indexOf(month);
-//   let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
-
-//   while (new Date(year, month, day).getDay() != 4) day--;
-
-//   while (true) {
-//     let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
-//       day,
-//     ).padStart(2, "0")}`;
-//     if (holidays[year - 2011].indexOf(date) == -1) return date;
-//     day--;
-//   }
-// };
 
 function istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
