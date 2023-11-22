@@ -8,6 +8,10 @@
     "pretest": "npx eslint --fix src test",
     "test": "jest --coverage test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zero65Tech/indian-stock-market.git"
+  },
   "devDependencies": {
     "eslint": "8.54.x",
     "jest": "29.7.x"
