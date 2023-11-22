@@ -23,12 +23,9 @@ function monthlyExpiry(yy, mon, weekday) {
 }
 
 function weeklyExpiry(yy, m, dd) {
-
-  let year = 2000 + parseInt(yy);
-  let month = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D'].indexOf(m);
-  let date = `${year}-${String(month + 1).padStart(2, "0")}-${dd}`;
-
-  return date;
+  let year = '20' + yy;
+  let month = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
+  return `${ year }-${ String(month + 1).padStart(2, "0") }-${ dd }`;
 }
 
 exports.info = (symbol) => {
