@@ -24,15 +24,18 @@ function monthlyExpiry(yy, mon, weekday) {
 
 function weeklyExpiry(yy, m, dd) {
 
-  // TODO
-  
+  let year = 2000 + parseInt(yy);
+  let month = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D'].indexOf(m);
+  let date = `${year}-${String(month + 1).padStart(2, "0")}-${dd}`;
+
+  return date;
 }
 
 exports.info = (symbol) => {
 
   // FUT - Monthly Expiry (only)
 
-  let match = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
+  let match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})FUT$/);
   if(match) {
 
     let script = match[1];
@@ -44,7 +47,7 @@ exports.info = (symbol) => {
 
   // OPT - Monthly Expiry
 
-  match = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
+  match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})([\d\.]+)(PE|CE)$/);
   if(match) {
 
     let script = match[1];
@@ -71,6 +74,7 @@ exports.info = (symbol) => {
   return { script: symbol };
 
 };
+// console.log(exports.info('NIFTY23D0720000CE'))
 
 
 
