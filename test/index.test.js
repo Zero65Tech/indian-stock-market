@@ -4,40 +4,11 @@ const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index'
 
 const infoTestCases = [
 
-  /*
-
-    FUT & OPT Monthly Expiry:
-      Stocks, Nifty, Nifty Bank:
-        - Last Thursday of the Month
-      Nifty Financial:
-        - Last Tuesday of the Month
-
-    FUT Weekly Expiry:
-      - NA
-
-    OPT Weekly Expiry:
-      Stocks:
-        - NA
-      Nifty:
-        - Thursday
-      Nifty Bank:
-        - Wednesday
-      Nifty Financial
-        - Tuesday
-
-    Weekly Expiry Nomenclature:
-      N = November
-      D = December
-
-  */
-
-
   // EQ
 
   [ "RELIANCE", { script: "RELIANCE" }], // Ends with "CE"
   [ "TCS",      { script: "TCS"      }],
   [ "WIPRO",    { script: "WIPRO"    }],
-
 
   // FO · FUT
 
@@ -50,12 +21,16 @@ const infoTestCases = [
   [ "BANKNIFTY23NOVFUT", { script: "BANKNIFTY", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
   [ "FINNIFTY23NOVFUT",  { script: "FINNIFTY",  exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
 
+  // FO · PE & CE
 
-  // FO · CE
+  [ "ITC23NOV432.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 432.5, type: "PE" } ],
+  [ "ITC23NOV435PE",   { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435  , type: "PE" } ],
+  [ "ITC23NOV437.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 437.5, type: "PE" } ],
 
   [ "WIPRO23NOV397.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "CE" } ],
   [ "WIPRO23NOV400CE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400  , type: "CE" } ],
   [ "WIPRO23NOV402.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "CE" } ],
+
   [ "NIFTY23D0720000CE", { script: "NIFTY", exp: "23D07", expiry: "2023-12-07", strike: 20000, type: "CE" } ], 
   [ "NIFTY23D1420000CE", { script: "NIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ], 
   [ "NIFTY23D2120000CE", { script: "NIFTY", exp: "23D21", expiry: "2023-12-21", strike: 20000, type: "CE" } ], 
@@ -70,13 +45,6 @@ const infoTestCases = [
   [ "FINNIFTY23D1220000CE", { script: "FINNIFTY", exp: "23D12", expiry: "2023-12-12", strike: 20000, type: "CE" } ], 
   [ "FINNIFTY23D1920000CE", { script: "FINNIFTY", exp: "23D19", expiry: "2023-12-19", strike: 20000, type: "CE" } ], 
   [ "FINNIFTY23DEC20000CE", { script: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ],
-
-
-  // FO · PE
-
-  [ "ITC23NOV432.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 432.5, type: "PE" } ],
-  [ "ITC23NOV435PE",   { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435  , type: "PE" } ],
-  [ "ITC23NOV437.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 437.5, type: "PE" } ],
 
 ];
 

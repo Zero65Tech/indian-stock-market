@@ -34,36 +34,27 @@ exports.info = (symbol) => {
 
   let match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})FUT$/);
   if(match) {
-
     let script = match[1];
     let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
-
     return { script, exp: match[2] + match[3], expiry, type: "FUT" };
-
   }
 
   // OPT - Monthly Expiry
 
   match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})([\d\.]+)(PE|CE)$/);
   if(match) {
-
     let script = match[1];
     let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
-
     return { script, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
-
   }
 
   // OPT - Weekly Expiry
 
   match = symbol.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d\.]+)(PE|CE)$/);
   if(match) {
-
     let script = match[1];
     let expiry = weeklyExpiry(match[2], match[3], match[4]);
-
     return { script, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
-
   }
 
   // MF & EQ
