@@ -24,7 +24,8 @@
     },
     "rules": {
       "no-constant-condition": "warn",
-      "no-useless-escape": "warn"
+      "no-useless-escape": "warn",
+      "no-unused-vars": "warn"
     }
   }
 }

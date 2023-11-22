@@ -4,25 +4,25 @@ const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GM
 
 
 
-function lastDayOfMonth(yy, mon, weekday) {
+function monthlyExpiry(yy, mon, weekday) {
 
   let year = 2000 + parseInt(yy);
   let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
   let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
 
-  while (new Date(year, month, day).getDay() != weekday) day--;
+  while(new Date(year, month, day).getDay() != weekday)
+    day--;
 
   while (true) {
-    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
-      day,
-    ).padStart(2, "0")}`;
-    if (holidays[year - 2011].indexOf(date) == -1) return date;
+    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    if(holidays[year - 2011].indexOf(date) == -1)
+      return date;
     day--;
   }
   
 }
 
-function _weeklyExpiry(yy, m, dd) {
+function weeklyExpiry(yy, m, dd) {
 
   // TODO
   
@@ -36,12 +36,11 @@ exports.info = (symbol) => {
   if(match) {
 
     let script = match[1];
-    let expiry = lastDayOfMonth(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
+    let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
 
     return { script, exp: match[2] + match[3], expiry, type: "FUT" };
 
   }
-
 
   // OPT - Monthly Expiry
 
@@ -49,12 +48,11 @@ exports.info = (symbol) => {
   if(match) {
 
     let script = match[1];
-    let expiry = lastDayOfMonth(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
+    let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
 
     return { script, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
 
   }
-
 
   // OPT - Weekly Expiry
 
@@ -62,12 +60,11 @@ exports.info = (symbol) => {
   if(match) {
 
     let script = match[1];
-    let expiry = _weeklyExpiry(match[2], match[3], match[4]);
+    let expiry = weeklyExpiry(match[2], match[3], match[4]);
 
     return { script, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
 
   }
-
 
   // MF & EQ
 
