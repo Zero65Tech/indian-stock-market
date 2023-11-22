@@ -74,7 +74,6 @@ exports.info = (symbol) => {
   return { script: symbol };
 
 };
-// console.log(exports.info('NIFTY23D0720000CE'))
 
 
 
