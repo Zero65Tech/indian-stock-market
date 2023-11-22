@@ -1,7 +1,7 @@
 
-# Indian-Stock-Exchange
+# Indian-Stock-Market
 
-Welcome to the Indian Stock Exchange project by Zero65Tech! This project is designed to provide tools to help you with real-time stock market data handling and analytics for the Indian stock market.
+Welcome to the Indian Stock Market project by Zero65Tech! This project is designed to provide tools to help you with real-time stock market data handling and analytics for the Indian stock market.
 
 
 
@@ -15,7 +15,7 @@ Welcome to the Indian Stock Exchange project by Zero65Tech! This project is desi
 - [Contributing](#contributing)
 - [License](#license)
 ## Introduction
-Welcome to the Indian Stock Exchange toolkit, a comprehensive set of tools and utilities crafted by Zero65 Technologies to empower stock market enthusiasts, traders, and analysts in navigating the dynamic landscape of the Indian stock market. Whether you're a seasoned investor or a budding trader, our toolkit is designed to streamline your data handling and analysis processes, providing you with valuable insights and facilitating informed decision-making.
+Welcome to the Indian Stock Market toolkit, a comprehensive set of tools and utilities crafted by Zero65 Technologies to empower stock market enthusiasts, traders, and analysts in navigating the dynamic landscape of the Indian stock market. Whether you're a seasoned investor or a budding trader, our toolkit is designed to streamline your data handling and analysis processes, providing you with valuable insights and facilitating informed decision-making.
 ## Features
 
 - Checks whether Market is Open or Closed.
@@ -28,16 +28,16 @@ Welcome to the Indian Stock Exchange toolkit, a comprehensive set of tools and u
 
 ## Installation
 
-To get started with the Indian Stock Exchange package, follow these steps:
+To get started with the Indian Stock Market package, follow these steps:
 
 #### Package Installation -
 ```bash
-  npm install @zero65/indian-stock-exchange
+  npm install @zero65/indian-stock-market
 ```
 
 #### Import Functions in your file -
 ```bash
-  const { info, isOpen, hasOpened, hasClosed, isHoliday } = require('@zero65/indian-stock-exchange')
+  const { info, isOpen, hasOpened, hasClosed, isHoliday } = require('@zero65/indian-stock-market')
 ``` 
 ## Utilities Explanation 
 
