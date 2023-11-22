@@ -1,8 +1,8 @@
 {
   "author": "Jai Gupta, Zero65 Technologies Pvt. Ltd.",
-  "name": "@zero65/indian-stock-exchange",
+  "name": "@zero65/indian-stock-market",
   "version": "4.0.0",
-  "description": "Indian Stock Exchange",
+  "description": "Indian Stock Market",
   "main": "src/index.js",
   "scripts": {
     "pretest": "npx eslint --fix src test",
