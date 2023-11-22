@@ -10,6 +10,7 @@ Welcome to the Indian Stock Exchange project by Zero65Tech! This project is desi
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
+- [Utilities Explanation](#UtilitiesExplanation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
