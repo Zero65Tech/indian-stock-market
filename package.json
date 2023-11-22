@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Zero65Tech/indian-stock-market.git"
+    "url": "https://github.com/Zero65Tech/indian-stock-market.git"
   },
   "devDependencies": {
     "eslint": "8.54.x",
