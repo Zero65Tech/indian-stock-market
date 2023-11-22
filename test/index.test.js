@@ -48,7 +48,7 @@ const infoTestCases = [
 
   [ "NIFTY23NOVFUT",     { script: "NIFTY",     exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
   [ "BANKNIFTY23NOVFUT", { script: "BANKNIFTY", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-  // [ "FINNIFTY23NOVFUT",  { script: "FINNIFTY",  exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ], // config required
+  [ "FINNIFTY23NOVFUT",  { script: "FINNIFTY",  exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
 
 
   // FO · CE
@@ -70,7 +70,7 @@ const infoTestCases = [
   // [ "FINNIFTY23D0520000CE", { script: "FINNIFTY", exp: "23D05", expiry: "2023-12-05", strike: 20000, type: "CE" } ], // weekly
   // [ "FINNIFTY23D1220000CE", { script: "FINNIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ], // weekly
   // [ "FINNIFTY23D1920000CE", { script: "FINNIFTY", exp: "23D19", expiry: "2023-12-19", strike: 20000, type: "CE" } ], // weekly
-  // [ "FINNIFTY23DEC20000CE", { script: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ], // config required
+  [ "FINNIFTY23DEC20000CE", { script: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ],
 
 
   // FO · PE

@@ -4,13 +4,13 @@ const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GM
 
 
 
-function _monthlyExpiry(yy, mon) {
+function lastDayOfMonth(yy, mon, weekday) {
 
   let year = 2000 + parseInt(yy);
   let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
   let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
 
-  while (new Date(year, month, day).getDay() != 4) day--;
+  while (new Date(year, month, day).getDay() != weekday) day--;
 
   while (true) {
     let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
@@ -36,27 +36,27 @@ exports.info = (symbol) => {
   if(match) {
 
     let script = match[1];
-    let expiry = _monthlyExpiry(match[2], match[3]);
+    let expiry = lastDayOfMonth(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
 
     return { script, exp: match[2] + match[3], expiry, type: "FUT" };
 
   }
 
 
-  // OPT - Monthly Expiry (only)
+  // OPT - Monthly Expiry
 
   match = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
   if(match) {
 
     let script = match[1];
-    let expiry = _monthlyExpiry(match[2], match[3]);
+    let expiry = lastDayOfMonth(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
 
     return { script, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
 
   }
 
 
-  // OPT - Weekly Expiry (only)
+  // OPT - Weekly Expiry
 
   match = symbol.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d\.]+)(PE|CE)$/);
   if(match) {
