@@ -2,55 +2,77 @@ const holidays = require("./holidays.js");
 const specialDays = require("./special-days.js");
 const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GMT
 
-exports.info = (symbol) => {
-  // BANKNIFTY20N0523500PE, BANKNIFTY23APR40000PE
-  // RELIANCE23APR2300CE, RELIANCE23APR2300PE
-  // M21OCT720PE, COALINDIA21JUL142.5PE
 
-  let opt = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
-  if (opt)
-    return {
-      script: opt[1],
-      expiry: opt[2] + opt[3],
-      strike: parseFloat(opt[4]),
-      type: opt[5],
-    };
 
-  let fut = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
-  if (fut) return { script: fut[1], expiry: fut[2] + fut[3], type: "FUT" };
+function monthlyExpiry(yy, mon, weekday) {
 
-  return { script: symbol };
-};
-
-exports.expiry = (expiry) => {
-  let year = 2000 + parseInt(expiry.substring(0, 2));
-  let month = expiry.substring(2);
-  month = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ].indexOf(month);
+  let year = 2000 + parseInt(yy);
+  let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
   let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
 
-  while (new Date(year, month, day).getDay() != 4) day--;
+  while(new Date(year, month, day).getDay() != weekday)
+    day--;
 
   while (true) {
-    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
-      day,
-    ).padStart(2, "0")}`;
-    if (holidays[year - 2011].indexOf(date) == -1) return date;
+    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    if(holidays[year - 2011].indexOf(date) == -1)
+      return date;
     day--;
   }
+  
+}
+
+function weeklyExpiry(yy, m, dd) {
+  let year = '20' + yy;
+  let month = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
+  return `${ year }-${ String(month + 1).padStart(2, "0") }-${ dd }`;
+}
+
+exports.info = (symbol) => {
+
+  // FUT - Monthly Expiry (only)
+
+  let match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})FUT$/);
+  if(match) {
+
+    let script = match[1];
+    let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
+
+    return { script, exp: match[2] + match[3], expiry, type: "FUT" };
+
+  }
+
+  // OPT - Monthly Expiry
+
+  match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})([\d\.]+)(PE|CE)$/);
+  if(match) {
+
+    let script = match[1];
+    let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
+
+    return { script, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
+
+  }
+
+  // OPT - Weekly Expiry
+
+  match = symbol.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d\.]+)(PE|CE)$/);
+  if(match) {
+
+    let script = match[1];
+    let expiry = weeklyExpiry(match[2], match[3], match[4]);
+
+    return { script, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
+
+  }
+
+  // MF & EQ
+
+  return { script: symbol };
+
 };
+
+
 
 function istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
