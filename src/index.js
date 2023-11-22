@@ -2,7 +2,9 @@ const holidays = require("./holidays.js");
 const specialDays = require("./special-days.js");
 const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GMT
 
-function expiryDate(yy, mon) {
+
+
+function _monthlyExpiry(yy, mon) {
 
   let year = 2000 + parseInt(yy);
   let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
@@ -20,30 +22,59 @@ function expiryDate(yy, mon) {
   
 }
 
+function _weeklyExpiry(yy, m, dd) {
+
+  // TODO
+  
+}
+
 exports.info = (symbol) => {
 
-  let fut = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
-  if(fut)
-    return {
-      script: fut[1],
-      exp: fut[2] + fut[3],
-      expiry: expiryDate(fut[2], fut[3]),
-      type: "FUT"
-    };
+  // FUT - Monthly Expiry (only)
 
-  let opt = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
-  if(opt)
-    return {
-      script: opt[1],
-      exp: opt[2] + opt[3],
-      expiry: expiryDate(opt[2], opt[3]),
-      strike: parseFloat(opt[4]),
-      type: opt[5],
-    };
+  let match = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
+  if(match) {
+
+    let script = match[1];
+    let expiry = _monthlyExpiry(match[2], match[3]);
+
+    return { script, exp: match[2] + match[3], expiry, type: "FUT" };
+
+  }
+
+
+  // OPT - Monthly Expiry (only)
+
+  match = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
+  if(match) {
+
+    let script = match[1];
+    let expiry = _monthlyExpiry(match[2], match[3]);
+
+    return { script, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
+
+  }
+
+
+  // OPT - Weekly Expiry (only)
+
+  match = symbol.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d\.]+)(PE|CE)$/);
+  if(match) {
+
+    let script = match[1];
+    let expiry = _weeklyExpiry(match[2], match[3], match[4]);
+
+    return { script, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
+
+  }
+
+
+  // MF & EQ
 
   return { script: symbol };
 
 };
+
 
 
 function istDayAndHr(date) {
