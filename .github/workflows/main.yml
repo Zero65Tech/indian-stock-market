@@ -16,4 +16,4 @@ jobs:
         template: main.yml
 
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: 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
