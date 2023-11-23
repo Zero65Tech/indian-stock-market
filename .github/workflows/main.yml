@@ -14,5 +14,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: Zero65Tech/config
+        token: ${{ secrets.PAT }}
         ref: master
 
