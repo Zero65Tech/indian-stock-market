@@ -1,0 +1,16 @@
+name: Test and Lint
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Zero65 workflow template
+      uses: Zero65Tech/config@master
+      with:
+        template: main.yml
