@@ -11,6 +11,6 @@ jobs:
 
     steps:
     - name: Zero65 workflow template
-      uses: Zero65Tech/config@master
+      uses: https://github.com/Zero65Tech/config.git@master
       with:
         template: main.yml
