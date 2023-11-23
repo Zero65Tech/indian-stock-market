@@ -11,6 +11,9 @@ jobs:
 
     steps:
     - name: Zero65 workflow template
-      uses: https://github.com/Zero65Tech/config.git@master
+      uses: Zero65Tech/config@master
       with:
         template: main.yml
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
