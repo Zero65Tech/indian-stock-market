@@ -9,11 +9,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     steps:
     - name: Zero65 workflow template
       uses: actions/checkout@v2
       with:
         repository: Zero65Tech/config
-        token: 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
         ref: master
 
