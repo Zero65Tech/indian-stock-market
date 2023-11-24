@@ -18,7 +18,9 @@
     "indian-stock",
     "stock-market",
     "market-utils",
-    "trading-utils"
+    "trading-utils",
+    "zero65",
+    "zero65-tech"
   ],
   "main": "src/index.js",
   "scripts": {
