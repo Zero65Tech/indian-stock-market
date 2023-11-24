@@ -1,4 +1,4 @@
-name: Linting
+name: indian-stock-market workflow
 
 on:
   push:
