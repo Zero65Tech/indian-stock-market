@@ -16,6 +16,6 @@ jobs:
     - name: Zero65 workflow template
       uses: actions/checkout@v2
       with:
-        repository: Zero65Tech/config
+        repository: Zero65Tech/playground
         ref: master
 
