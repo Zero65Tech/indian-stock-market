@@ -1,0 +1,17 @@
+name: indian-stock-market workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Zero65 workflow template
+      uses: actions/checkout@v2
+      with:
+        repository: Zero65Tech/playground
+        ref: master
