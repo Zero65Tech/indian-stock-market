@@ -75,7 +75,10 @@ const dateTimeTestCases = [
   // Repulic Day
   [ '2023-01-26T12:00:00+05:30', true, false, false, false ],
 
-  // TODO: Muhurat Day
+  // Muhurat Day
+  [ '2023-11-12T18:15:00+05:30', false, true,  true,  false ],
+  [ '2023-11-12T18:14:59+05:30', false, false, false, false ],
+  [ '2023-11-12T19:15:00+05:30', false, false, true,  true ],
 
 ]
 
