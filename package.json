@@ -24,6 +24,7 @@
   ],
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/conversion.js",
     "test": "jest --coverage test",
     "lint": "npx eslint --fix src test"
   },
@@ -48,5 +49,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
   }
 }
