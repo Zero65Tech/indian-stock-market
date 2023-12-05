@@ -1,31 +1,34 @@
-const holidays = require("./holidays.js");
+const holidays = require("./holidaysObject.js")
 const specialDays = require("./special-days.js");
-let muhuratDay  = new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24 + 5.5; // IST
+const { differenceInMinutes, startOfDay, format } = require("date-fns")
 
 
 
 function monthlyExpiry(yy, mon, weekday) {
 
-  let year = 2000 + parseInt(yy);
+  let year  = 2000 + parseInt(yy);
   let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
-  let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
+  let day   = new Date(year, month + 1, 0).getDate(); // Last day of the month
 
   while(new Date(year, month, day).getDay() != weekday)
     day--;
 
   while (true) {
-    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-    if(holidays[year - 2011].indexOf(date) == -1)
+    let date = format(new Date(year, month, day), 'yyyy-MM-dd');
+    if(holidays[year][month+1] != day)
       return date;
     day--;
   }
   
 }
 
+
 function weeklyExpiry(yy, m, dd) {
-  let year = '20' + yy;
+
+  let year = '20' + yy
   let month = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
-  return `${ year }-${ String(month + 1).padStart(2, "0") }-${ dd }`;
+  return format(new Date(year, month, dd), 'yyyy-MM-dd');
+
 }
 
 exports.info = (symbol) => {
@@ -64,75 +67,67 @@ exports.info = (symbol) => {
 };
 
 
-
 function istDayAndHr(date) {
-  let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
-  return [Math.floor(hrs / 24), hrs % 24];
+  const startOfDayDate = startOfDay(new Date());
+  return differenceInMinutes(date, startOfDayDate) / 60;
 }
 
 function Datestr(date) {
-  return date.getUTCFullYear() 
-  + ((date.getUTCMonth() < 9 ? '-0' : '-') + (date.getUTCMonth() + 1))
-  + ((date.getUTCDate() < 10 ? '-0' : '-') + date.getUTCDate());
+  return format(date, 'yyyy-MM-dd');
 }
 
 
 exports.isOpen = () => {
+
   let date = new Date();
   if (exports.isHoliday(date)) return false;
 
-  let [day, hrs] = istDayAndHr(date);
+  let hrs = istDayAndHr(date);
 
-  if(specialDays.indexOf(Datestr(date)) != -1){
-    muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
+  if(specialDays.indexOf(Datestr(date)) != -1) {
+    return hrs >= 18.25 && hrs < 19.25;
   }
+  return hrs >= 9 && hrs < 15.5;
 
-  if (day == muhuratDay) return hrs >= 18.25 && hrs < 19.25;
-  else return hrs >= 9 && hrs < 15.5;
 };
 
 exports.hasOpened = () => {
+
   let date = new Date();
   if (exports.isHoliday(date)) return false;
 
-  let [day, hrs] = istDayAndHr(date);
+  let hrs = istDayAndHr(date);
 
-  if(specialDays.indexOf(Datestr(date)) != -1){
-    muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
-  }
+  if(specialDays.indexOf(Datestr(date)) != -1) return hrs >= 18.25
 
-  if (day == muhuratDay) return hrs >= 18.25;
-  else return hrs >= 9;
+  return hrs >= 9;
+
 };
 
 exports.hasClosed = () => {
+
   let date = new Date();
   if (exports.isHoliday(date)) return false;
 
-  let [day, hrs] = istDayAndHr(date);
+  let hrs = istDayAndHr(date);
 
-  if(specialDays.indexOf(Datestr(date)) != -1){
-    muhuratDay  = Math.floor((date.getTime() / 1000 / 60 / 60 + 5.5) / 24);
-  }
+  if(specialDays.indexOf(Datestr(date)) != -1) return hrs >= 19.25;
   
-  if (day == muhuratDay) return hrs >= 19.25;
-  else return hrs >= 15.5;
+  return hrs >= 15.5;
+
 };
 
 exports.isHoliday = (date = new Date()) => {
-  let dateStr = date;
 
-  if (typeof date == "object") {
-    date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-    dateStr =
-      date.getUTCFullYear() +
-      ((date.getUTCMonth() < 9 ? "-0" : "-") + (date.getUTCMonth() + 1)) +
-      ((date.getUTCDate() < 10 ? "-0" : "-") + date.getUTCDate());
-  } else if (typeof date == "string") {
-    date = new Date(date); // GMT
-  }
+  let datestr = Datestr(date);
+  const [ yy, mm, dd ] = datestr.split('-');
+  let year = parseInt(yy)
+  let month = parseInt(mm)
+  let din = parseInt(dd)
+  let day = date.getDay()
 
-  if (date.getUTCDay() >= 1 && date.getUTCDay() <= 5)
-    return holidays[date.getUTCFullYear() - 2011].indexOf(dateStr) != -1;
-  else return specialDays.indexOf(dateStr) == -1;
+  if (day >= 1 && day <= 5) return holidays[year][month] == din
+
+  else return specialDays.indexOf(datestr) == -1
+
 };

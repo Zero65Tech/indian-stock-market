@@ -87,7 +87,7 @@ for(const [ dateTime, bool1, bool2, bool3, bool4 ] of dateTimeTestCases) {
 
     beforeAll(() => jest.useFakeTimers({ now: new Date(dateTime) }));
 
-    test('.isHoliday(dateStr)', () => expect(isHoliday(dateTime.substring(0,10))).toBe(bool1));
+    test('.isHoliday(dateStr)', () => expect(isHoliday(new Date(dateTime))).toBe(bool1));
 
     test('.isHoliday()', () => expect(isHoliday()).toBe(bool1));
     test('.isOpen()',    () => expect(isOpen())   .toBe(bool2));
@@ -96,4 +96,3 @@ for(const [ dateTime, bool1, bool2, bool3, bool4 ] of dateTimeTestCases) {
 
   })
 }
-
