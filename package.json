@@ -24,8 +24,12 @@
   ],
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/build.js",
     "test": "jest --coverage test",
     "lint": "npx eslint --fix src test"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0"
   },
   "devDependencies": {
     "eslint": "8.54.x",
