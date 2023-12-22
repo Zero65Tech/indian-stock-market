@@ -1,7 +1,7 @@
 {
   "author": "Jai Gupta, Zero65 Technologies Pvt. Ltd.",
   "name": "@zero65tech/indian-stock-market",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "description": "Indian Stock Market Toolkit",
   "license": "MIT",
   "repository": {
@@ -25,7 +25,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "node build/index.js",
-    "test": "jest --coverage --testPathPattern=test/",
+    "test": "jest --coverage --watch --testPathPattern=test/",
     "lint": "npx eslint --fix src build test"
   },
   "dependencies": {},

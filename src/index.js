@@ -98,19 +98,23 @@ exports.hasClosed = () => {
 };
 
 exports.isHoliday = (date = new Date()) => {
-  let dateStr = date;
 
-  if (typeof date == "object") {
+  if(typeof date == "object")
     date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-    dateStr =
-      date.getUTCFullYear() +
-      ((date.getUTCMonth() < 9 ? "-0" : "-") + (date.getUTCMonth() + 1)) +
-      ((date.getUTCDate() < 10 ? "-0" : "-") + date.getUTCDate());
-  } else if (typeof date == "string") {
+  else if(typeof date == "string")
     date = new Date(date); // GMT
+
+  let year  = date.getUTCFullYear();
+  let month = date.getUTCMonth() + 1;
+  let day   = date.getUTCDate();
+
+  if(date.getUTCDay() >= 1 && date.getUTCDay() <= 5) {
+    return holidays[year] != undefined
+        && holidays[year][month] != undefined
+        && holidays[year][month].includes(day);
+  } else {
+    let dateStr = year + (month < 10 ? "-0" : "-") + month + (day < 10 ? "-0" : "-") + day;
+    return specialDays.indexOf(dateStr) == -1;
   }
 
-  if (date.getUTCDay() >= 1 && date.getUTCDay() <= 5)
-    return holidays[date.getUTCFullYear()][date.getUTCMonth()+1].indexOf(date.getUTCDate()) != -1;
-  else return specialDays.indexOf(dateStr) == -1;
 };
