@@ -1,6 +1,6 @@
-const holidays = require("./holidays.json");
+const holidays    = require("./holidays.json");
 const specialDays = require("./special-days.js");
-const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GMT
+const muhuratDay  = new Date("2024-11-01").getTime() / 1000 / 60 / 60 / 24; // GMT
 
 
 
@@ -13,7 +13,7 @@ function monthlyExpiry(yy, mon, weekday) {
   while(new Date(year, month, day).getDay() != weekday)
     day--;
 
-  while (true) {
+  while(true) {
     let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
     if(holidays[year][month + 1].indexOf(day) == -1)
       return date;
@@ -67,35 +67,52 @@ exports.info = (symbol) => {
 
 function istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
-  return [Math.floor(hrs / 24), hrs % 24];
+  return [ Math.floor(hrs / 24), hrs % 24 ];
 }
 
 exports.isOpen = () => {
+
   let date = new Date();
-  if (exports.isHoliday(date)) return false;
+  if(exports.isHoliday(date))
+    return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if (day == muhuratDay) return hrs >= 18.25 && hrs < 19.25;
-  else return hrs >= 9 && hrs < 15.5;
+  if(day == muhuratDay)
+    return hrs >= 18 && hrs < 19.25;
+  else
+    return hrs >= 9 && hrs < 15.5;
+
 };
 
 exports.hasOpened = () => {
+
   let date = new Date();
-  if (exports.isHoliday(date)) return false;
+  if(exports.isHoliday(date))
+    return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if (day == muhuratDay) return hrs >= 18.25;
-  else return hrs >= 9;
+  if(day == muhuratDay)
+    return hrs >= 18;
+  else
+    return hrs >= 9;
+
 };
 
 exports.hasClosed = () => {
+
   let date = new Date();
-  if (exports.isHoliday(date)) return false;
+  if(exports.isHoliday(date))
+    return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if (day == muhuratDay) return hrs >= 19.25;
-  else return hrs >= 15.5;
+  if(day == muhuratDay)
+    return hrs >= 19.25;
+  else
+    return hrs >= 15.5;
+
 };
+
+
 
 exports.isHoliday = (date = new Date()) => {
 
