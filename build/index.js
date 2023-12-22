@@ -1,6 +1,6 @@
 const fs       = require("fs");
-const holidays = require("../src/holidays.js");
 
+const holidays = require("../src/holidays.js");
 const minified = {};
 
 for(let dateArr of holidays) {

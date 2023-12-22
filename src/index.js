@@ -15,7 +15,7 @@ function monthlyExpiry(yy, mon, weekday) {
 
   while (true) {
     let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-    if(holidays[year][month+1] != day)
+    if(holidays[year][month + 1].indexOf(day) == -1)
       return date;
     day--;
   }
@@ -111,6 +111,6 @@ exports.isHoliday = (date = new Date()) => {
   }
 
   if (date.getUTCDay() >= 1 && date.getUTCDay() <= 5)
-    return holidays[date.getUTCFullYear()][date.getUTCMonth()+1] == date.getUTCDate();
+    return holidays[date.getUTCFullYear()][date.getUTCMonth()+1].indexOf(date.getUTCDate()) != -1;
   else return specialDays.indexOf(dateStr) == -1;
 };
