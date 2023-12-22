@@ -1,4 +1,4 @@
-const holidays = require("./holidays.js");
+const holidays = require("./holidays.json");
 const specialDays = require("./special-days.js");
 const muhuratDay = new Date("2023-11-12").getTime() / 1000 / 60 / 60 / 24; // GMT
 
@@ -15,7 +15,7 @@ function monthlyExpiry(yy, mon, weekday) {
 
   while (true) {
     let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-    if(holidays[year - 2011].indexOf(date) == -1)
+    if(holidays[year][month + 1].indexOf(day) == -1)
       return date;
     day--;
   }
@@ -111,6 +111,6 @@ exports.isHoliday = (date = new Date()) => {
   }
 
   if (date.getUTCDay() >= 1 && date.getUTCDay() <= 5)
-    return holidays[date.getUTCFullYear() - 2011].indexOf(dateStr) != -1;
+    return holidays[date.getUTCFullYear()][date.getUTCMonth()+1].indexOf(date.getUTCDate()) != -1;
   else return specialDays.indexOf(dateStr) == -1;
 };

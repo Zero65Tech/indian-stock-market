@@ -24,9 +24,11 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --coverage test",
-    "lint": "npx eslint --fix src test"
+    "build": "node build/index.js",
+    "test": "jest --coverage --testPathPattern=test/",
+    "lint": "npx eslint --fix src build test"
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "8.54.x",
     "jest": "29.7.x"
