@@ -130,7 +130,7 @@ exports.isHoliday = (date = new Date()) => {
       && specialDays[year][month].includes(day))
     return false;
   
-  if(date.getUTCDay() < 1 && date.getUTCDay() > 5)
+  if(date.getUTCDay() < 1 || date.getUTCDay() > 5)
     return true;
   
   return holidays[year] != undefined
