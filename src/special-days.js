@@ -22,5 +22,5 @@ module.exports = [
   // 2023
   '2023-11-12', // Muhurat Trading
   // 2024
-  '2023-11-01', // Muhurat Trading
+  '2024-11-01', // Muhurat Trading
 ]
