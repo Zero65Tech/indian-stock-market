@@ -1,5 +1,5 @@
 const holidays    = require("./holidays.json");
-const specialDays = require("./special-days.js");
+const specialDays = require("./special-days.json");
 const muhuratDay  = new Date("2024-11-01").getTime() / 1000 / 60 / 60 / 24; // GMT
 
 
@@ -126,12 +126,17 @@ exports.isHoliday = (date = new Date()) => {
   let day   = date.getUTCDate();
 
   if(date.getUTCDay() >= 1 && date.getUTCDay() <= 5) {
-    return holidays[year] != undefined
-        && holidays[year][month] != undefined
-        && holidays[year][month].includes(day);
-  } else {
-    let dateStr = year + (month < 10 ? "-0" : "-") + month + (day < 10 ? "-0" : "-") + day;
-    return specialDays.indexOf(dateStr) == -1;
-  }
+    
+    if(specialDays[year] != undefined && specialDays[year][month] != undefined && specialDays[year][month].indexOf(day) != -1)
+      return false
+    else 
+      return holidays[year] != undefined
+          && holidays[year][month] != undefined
+          && holidays[year][month].includes(day);
+
+  } else 
+      return !(specialDays[year] != undefined 
+            && specialDays[year][month] != undefined 
+            && specialDays[year][month].indexOf(day) != -1) 
 
 };

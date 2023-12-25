@@ -1,4 +1,4 @@
-const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index')
+const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index2')
 
 
 
@@ -75,7 +75,10 @@ const dateTimeTestCases = [
   // Repulic Day
   [ '2023-01-26T12:00:00+05:30', true, false, false, false ],
 
-  // TODO: Muhurat Day
+  // Muhurat Day
+  [ '2024-11-01T18:00:00+05:30', false, true,  true,  false ],
+  [ '2024-11-01T17:59:59+05:30', false, false, false, false ],
+  [ '2024-11-01T19:15:00+05:30', false, false, true,  true ],
 
 ]
 
