@@ -2,6 +2,7 @@ const fs = require("fs");
 
 const holidays    = require("../src/holidays.js");
 const specialDays = require("../src/special-days.js");
+
 let minified = {};
 
 for(let dateArr of holidays) {
@@ -26,14 +27,14 @@ minified = {};
 
 for(let date of specialDays) {
   let [ year, month, day ] = date.split('-');
-    year  = parseInt(year);
-    month = parseInt(month);
-    day   = parseInt(day);
+  year  = parseInt(year);
+  month = parseInt(month);
+  day   = parseInt(day);
 
-    minified[year] = minified[year] || {};
-    minified[year][month] = minified[year][month] || [];
+  minified[year] = minified[year] || {};
+  minified[year][month] = minified[year][month] || [];
 
-    minified[year][month].push(day);
+  minified[year][month].push(day);
 }
 
 fs.writeFileSync('src/special-days.json', JSON.stringify(minified));
