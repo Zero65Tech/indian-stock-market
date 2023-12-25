@@ -1,4 +1,4 @@
-const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index2')
+const { info, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index')
 
 
 
