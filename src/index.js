@@ -125,18 +125,16 @@ exports.isHoliday = (date = new Date()) => {
   let month = date.getUTCMonth() + 1;
   let day   = date.getUTCDate();
 
-  if(date.getUTCDay() >= 1 && date.getUTCDay() <= 5) {
-    
-    if(specialDays[year] != undefined && specialDays[year][month] != undefined && specialDays[year][month].indexOf(day) != -1)
-      return false
-    else 
-      return holidays[year] != undefined
-          && holidays[year][month] != undefined
-          && holidays[year][month].includes(day);
-
-  } else 
-      return !(specialDays[year] != undefined 
-            && specialDays[year][month] != undefined 
-            && specialDays[year][month].indexOf(day) != -1) 
-
+  if(specialDays[year] != undefined
+      && specialDays[year][month] != undefined
+      && specialDays[year][month].includes(day))
+    return false;
+  
+  if(date.getUTCDay() < 1 && date.getUTCDay() > 5)
+    return true;
+  
+  return holidays[year] != undefined
+      && holidays[year][month] != undefined
+      && holidays[year][month].includes(day);
+  
 };
