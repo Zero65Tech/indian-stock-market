@@ -15,3 +15,5 @@ jobs:
       with:
         repository: Zero65Tech/playground
         ref: master
+    - name: Install dependencies
+      run: node -v
