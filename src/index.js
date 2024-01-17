@@ -78,7 +78,7 @@ exports.isOpen = () => {
     return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if(day == specialday) //muhuratDay)
+  if(day == specialday)
     // return hrs >= 18 && hrs < 19.25;
     return hrs >= 9 && hrs < 12.5;
   else
@@ -93,7 +93,7 @@ exports.hasOpened = () => {
     return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if(day == specialday) // muhuratDay)
+  if(day == specialday)
     return hrs >= 9;
   else
     return hrs >= 9;
@@ -107,7 +107,7 @@ exports.hasClosed = () => {
     return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if(day == specialday) // muhuratDay)
+  if(day == specialday)
     return hrs >= 12.5;
   else
     return hrs >= 15.5;
