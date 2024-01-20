@@ -82,7 +82,10 @@ const dateTimeTestCases = [
 
   // Special Day
   [ '2024-01-20T12:00:00+05:30', false, true,  true, false ],
-  [ '2024-01-20T12:30:00+05:30', false, false, true, true ],
+  [ '2024-01-20T15:30:00+05:30', false, false, true, true ],
+
+  // Holiday
+  [ '2024-01-22T12:00:00+05:30', true, false, false, false ],
 
 ]
 
