@@ -75,17 +75,13 @@ const dateTimeTestCases = [
   // Repulic Day
   [ '2023-01-26T12:00:00+05:30', true, false, false, false ],
 
-  // Muhurat Day
-  // [ '2024-11-01T17:59:59+05:30', false, false, false, false ],
-  // [ '2024-11-01T18:00:00+05:30', false, true,  true,  false ],
-  // [ '2024-11-01T19:15:00+05:30', false, false, true,  true ],
+  // Ram Temple Consecration
+  [ '2024-01-22T12:00:00+05:30', true, false, false, false ],
 
   // Special Day
-  [ '2024-01-20T12:00:00+05:30', false, true,  true, false ],
-  [ '2024-01-20T15:30:00+05:30', false, false, true, true ],
-
-  // Holiday
-  [ '2024-01-22T12:00:00+05:30', true, false, false, false ],
+  [ '2024-11-01T17:59:59+05:30', false, false, false, false ],
+  [ '2024-11-01T18:00:00+05:30', false, true,  true,  false ],
+  [ '2024-11-01T19:15:00+05:30', false, false, true,  true  ],
 
 ]
 

@@ -1,7 +1,6 @@
 const holidays    = require("./holidays.json");
 const specialDays = require("./special-days.json");
-// const muhuratDay  = new Date("2024-11-01").getTime() / 1000 / 60 / 60 / 24; // GMT
-const specialday  = new Date("2024-01-20").getTime() / 1000 / 60 / 60 / 24; // GMT
+const specialday  = new Date("2024-11-01").getTime() / 1000 / 60 / 60 / 24; // GMT
 
 
 
@@ -79,8 +78,7 @@ exports.isOpen = () => {
 
   let [day, hrs] = istDayAndHr(date);
   if(day == specialday)
-    // return hrs >= 18 && hrs < 19.25;
-    return hrs >= 9 && hrs < 15.5;
+    return hrs >= 18 && hrs < 19.25;
   else
     return hrs >= 9 && hrs < 15.5;
 
@@ -94,7 +92,7 @@ exports.hasOpened = () => {
 
   let [day, hrs] = istDayAndHr(date);
   if(day == specialday)
-    return hrs >= 9;
+    return hrs >= 18;
   else
     return hrs >= 9;
 
@@ -108,7 +106,7 @@ exports.hasClosed = () => {
 
   let [day, hrs] = istDayAndHr(date);
   if(day == specialday)
-    return hrs >= 15.5;
+    return hrs >= 19.25;
   else
     return hrs >= 15.5;
 
