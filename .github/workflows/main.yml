@@ -11,9 +11,9 @@ jobs:
 
     steps:
     - name: Zero65 workflow template
-      uses: actions/checkout@v2
       with:
         repository: Zero65Tech/playground
         ref: master
+      uses: actions/checkout@v2
     - name: Install dependencies
       run: node -v
