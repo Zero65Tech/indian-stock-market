@@ -1,7 +1,7 @@
 
 # indian-stock-market
 
-This utility provides functions to manage and query information related to trading schedules, market openings, and expiries for financial instruments. The utility is written in JavaScript and can be used in Node.js environments.
+This utility provides functions to manage and query information related to trading schedules, market openings, and expiries for Indian Stock Market. The utility is written in JavaScript and can be used in Node.js environments.
 
 ## Features
 
@@ -17,43 +17,26 @@ This utility provides functions to manage and query information related to tradi
 
 To get started with the Indian Stock Market package, follow these steps:
 
-### Package Installation -
+### Package Installation
 ```bash
-  npm install @zero65/indian-stock-market
+  npm install @zero65tech/indian-stock-market
 ```
 
-### Import Functions in your project -
+### Import Functions in your project
 ```javascript
-  const { info, isOpen, hasOpened, hasClosed, isHoliday } = require('@zero65/indian-stock-market')
+  const { info, isOpen, hasOpened, hasClosed, isHoliday } = require('@zero65tech/indian-stock-market')
 ``` 
-## Utilities Explanation 
+## Functions explanation
 
-- **info**( _symbol_ ) -
-    - Input :- Complete Symbol string
-    - Return :- Object
-    - Explanation :- Takes complete Symbol as string and returns an object with keys  
-        - _script, exp, expiry, strike, type_ for **Options** 
-        - _script, exp, expiry, type_ for **FUT**
-- **isOpen**( ) -
-    - Input :- _None_
-    - Return :- Boolean
-    - Explanation :- Internally, it takes the current date and time as input and returns **true** if stock market is open, and **false** if it is closed.
-- **hasOpened**( ) -
-    - Input :- _None_
-    - Return :- Boolean
-    - Explanation :- Internally, it takes the current date and time as input and returns **true** if stock market has opened, and **false** if it has not opened for the day.  
-       (**_Note:_** _It will return true even if the market is closed but had opened earlier on that particular day._)
-- **hasClosed**( ) -
-    - Input :- _None_
-    - Return :- Boolean
-    - Explanation :- Internally, it takes the current date and time as input and returns **true** if the stock market was closed, and **false** if it is open or has not opened at all.
-- **isHoliday**( _date_ ) -
-    - Input :- Date in the string format 'yyyy-mm-dd' or _None (Input is optional)_  
-    - Return :- Boolean
-    - Explanation :- It takes a date in the string format 'yyyy-mm-dd' as input, or if no input is given, it assigns the current date internally. It then returns **true** if the assigned date is a stock market holiday and **false** otherwise.
-## Usage/Examples
+### 1. `exports.info(symbol)`
+
+This function analyzes a given trading symbol and returns information about the financial instrument, including script, expiry, expiry date, strike (if applicable), and type (FUT, PE, CE). It supports both monthly and weekly expiries for options.
+
+#### Example Usage:
 
 ```javascript
+const result = exports.info("NIFTY22JAN12000CE");
+// Output: { script: 'NIFTY', exp: '22JAN', expiry: '2024-01-25', strike: 12000, type: 'CE' }
 ```
 
 
