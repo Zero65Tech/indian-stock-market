@@ -1,21 +1,8 @@
 
-# Indian-Stock-Market
+# indian-stock-market
 
-Welcome to the Indian Stock Market project by Zero65Tech! This project is designed to provide tools to help you with real-time stock market data handling and analytics for the Indian stock market.
+This utility provides functions to manage and query information related to trading schedules, market openings, and expiries for financial instruments. The utility is written in JavaScript and can be used in Node.js environments.
 
-
-
-
-## Table of Content
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Utilities Explanation](#utilities-explanation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-## Introduction
-Welcome to the Indian Stock Market toolkit, a comprehensive set of tools and utilities crafted by Zero65 Technologies to empower stock market enthusiasts, traders, and analysts in navigating the dynamic landscape of the Indian stock market. Whether you're a seasoned investor or a budding trader, our toolkit is designed to streamline your data handling and analysis processes, providing you with valuable insights and facilitating informed decision-making.
 ## Features
 
 - Checks whether Market is Open or Closed.
@@ -26,17 +13,17 @@ Welcome to the Indian Stock Market toolkit, a comprehensive set of tools and uti
 - Updated list of Public Holidays and Special days every year.
 
 
-## Installation
+## Usage
 
 To get started with the Indian Stock Market package, follow these steps:
 
-#### Package Installation -
+### Package Installation -
 ```bash
   npm install @zero65/indian-stock-market
 ```
 
-#### Import Functions in your file -
-```bash
+### Import Functions in your project -
+```javascript
   const { info, isOpen, hasOpened, hasClosed, isHoliday } = require('@zero65/indian-stock-market')
 ``` 
 ## Utilities Explanation 
