@@ -86,8 +86,9 @@ This function checks if a given date is a holiday. By default, it checks the cur
 #### Example Usage:
 
 ```javascript
-const isHoliday = exports.isHoliday(new Date("2024-01-01"));
-// Output: true or false
+const isHoliday = exports.isHoliday("2024-01-01"); 
+// Output: false
+// 2024-01-01 is not a Holiday
 ``` 
 
 
