@@ -5,12 +5,15 @@ This utility provides functions to manage and query information related to tradi
 
 ## Features
 
-- Checks whether Market is Open or Closed.
-- Checks if given date is Market Holiday.
-- Provides Monthly and Weekly Expiry dates for FUT and Options.
-- CE (Call Option), PE (Put Option), FUT,  Symbols matching with its complete breakdown in required format.
-- Provides you with complete list of Public Holidays and Special days.
-- Updated list of Public Holidays and Special days every year.
+- **Market Status:** Determine whether the market is currently open or closed.
+- **Holiday Check:** Verify if a specified date is a market holiday.
+- **Expiry Information:** Obtain accurate monthly and weekly expiry dates for Futures (FUT) and Options.
+- **Symbol Breakdown:** Receive detailed breakdowns for Call Options (CE), Put Options (PE), and Futures (FUT) symbols in the required format.
+- **Comprehensive Symbol Matching:** Efficiently match symbols and provide complete breakdowns.
+- **Holiday Database:** Access an up-to-date list of public holidays and special days.
+- **Dynamic Updates:** Benefit from regularly updated lists of public holidays and special days, ensuring accuracy every year.
+
+Our utility is designed to enhance your trading experience by providing precise market status information and comprehensive symbol details.
 
 
 ## Usage
