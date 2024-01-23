@@ -28,7 +28,11 @@ To get started with the Indian Stock Market package, follow these steps:
 ``` 
 ## Functions explanation
 
-### 1. `exports.info(symbol)`
+#### Note:
+- This utility uses IST (Indian Standard Time) for date and time calculations.
+- All times are represented in a 24-hour format
+
+### 1. `info(symbol)`
 
 This function analyzes a given trading symbol and returns information about the financial instrument, including script, expiry, expiry date, strike (if applicable), and type (FUT, PE, CE). It supports both monthly and weekly expiries for options.
 
@@ -38,6 +42,51 @@ This function analyzes a given trading symbol and returns information about the 
 const result = exports.info("NIFTY22JAN12000CE");
 // Output: { script: 'NIFTY', exp: '22JAN', expiry: '2024-01-25', strike: 12000, type: 'CE' }
 ```
+
+### 2. `isOpen()`
+
+This function checks if the market is currently open based on the Indian Standard Time (IST). It considers holidays and special days.
+
+#### Example Usage:
+
+```javascript
+const isOpen = exports.isOpen();
+// Output: true or false
+```
+
+### 3. `hasOpened()`
+
+This function checks if the market has opened for the current day based on Indian Standard Time (IST). It considers holidays and special days.
+
+#### Example Usage:
+
+```javascript
+const hasOpened = exports.hasOpened();
+// Output: true or false
+```
+
+### 4. `exports.hasClosed()`
+
+This function checks if the market has closed for the current day based on Indian Standard Time (IST). It considers holidays and special days.
+
+#### Example Usage:
+
+```javascript
+const hasClosed = exports.hasClosed();
+// Output: true or false
+```
+
+### 5. `exports.isHoliday(date)`
+
+This function checks if a given date is a holiday. By default, it checks the current date if no date is provided. The function considers predefined holidays and special days.
+
+#### Example Usage:
+
+```javascript
+const isHoliday = exports.isHoliday(new Date("2024-01-01"));
+// Output: true or false
+``` 
+
 
 
 
