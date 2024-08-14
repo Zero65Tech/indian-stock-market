@@ -6,26 +6,26 @@ const specialday  = new Date("2024-11-01").getTime() / 1000 / 60 / 60 / 24; // G
 
 function monthlyExpiry(yy, mon, weekday) {
 
-  let year = 2000 + parseInt(yy);
-  let month = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
-  let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
+  let yyyy = 2000 + parseInt(yy);
+  let mm = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
+  let dd = new Date(yyyy, mm + 1, 0).getDate(); // Last day of the month
 
-  while(new Date(year, month, day).getDay() != weekday)
-    day--;
+  while(new Date(yyyy, mm, dd).getDay() != weekday)
+    dd--;
 
   while(true) {
-    let date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-    if(holidays[year][month + 1].indexOf(day) == -1)
+    let date = `${ yyyy }-${ String(mm + 1).padStart(2,'0') }-${ String(dd).padStart(2,'0') }`;
+    if(!holidays[yyyy][mm + 1].includes(dd))
       return date;
-    day--;
+    dd--;
   }
   
 }
 
 function weeklyExpiry(yy, m, dd) {
   let year = '20' + yy;
-  let month = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
-  return `${ year }-${ String(month + 1).padStart(2, "0") }-${ dd }`;
+  let mm = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
+  return `${ year }-${ String(mm + 1).padStart(2, "0") }-${ dd }`;
 }
 
 exports.info = (symbol) => {
@@ -121,20 +121,20 @@ exports.isHoliday = (date = new Date()) => {
   else if(typeof date == "string")
     date = new Date(date); // GMT
 
-  let year  = date.getUTCFullYear();
-  let month = date.getUTCMonth() + 1;
-  let day   = date.getUTCDate();
+  let yyyy = date.getUTCFullYear();
+  let mm   = date.getUTCMonth() + 1;
+  let dd   = date.getUTCDate();
 
-  if(specialDays[year] != undefined
-      && specialDays[year][month] != undefined
-      && specialDays[year][month].includes(day))
+  if(specialDays[yyyy] != undefined
+      && specialDays[yyyy][mm] != undefined
+      && specialDays[yyyy][mm].includes(dd))
     return false;
   
   if(date.getUTCDay() < 1 || date.getUTCDay() > 5)
     return true;
   
-  return holidays[year] != undefined
-      && holidays[year][month] != undefined
-      && holidays[year][month].includes(day);
+  return holidays[yyyy] != undefined
+      && holidays[yyyy][mm] != undefined
+      && holidays[yyyy][mm].includes(dd);
   
 };
