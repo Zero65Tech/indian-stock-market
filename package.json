@@ -1,7 +1,7 @@
 {
   "author": "Jai Gupta, Zero65 Technologies Pvt. Ltd.",
   "name": "@zero65tech/indian-stock-market",
-  "version": "4.1.7",
+  "version": "4.1.8",
   "description": "Indian Stock Market Toolkit",
   "license": "MIT",
   "repository": {
@@ -30,23 +30,12 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@zero65tech/eslint-config": "2.0.x",
     "eslint": "8.54.x",
     "jest": "29.7.x"
   },
-  "eslintConfig": {
-    "env": {
-      "es2021": true,
-      "jest": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": "latest"
-    },
-    "rules": {
-      "no-constant-condition": "warn",
-      "no-useless-escape": "warn"
-    }
+   "eslintConfig": {
+    "extends": "@zero65tech"
   },
   "publishConfig": {
     "access": "public"
