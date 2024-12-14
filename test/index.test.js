@@ -100,4 +100,3 @@ for(const [ dateTime, bool1, bool2, bool3, bool4 ] of dateTimeTestCases) {
 
   })
 }
-
