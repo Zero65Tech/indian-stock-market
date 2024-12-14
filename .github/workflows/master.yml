@@ -8,7 +8,5 @@ on:
 jobs:
   publish:
     uses: Zero65Tech/github-workflows/.github/workflows/npm-publish.yaml@master
-    with:
-      NODE_VERSION: '22' # 22.12.0
     secrets:
       NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
