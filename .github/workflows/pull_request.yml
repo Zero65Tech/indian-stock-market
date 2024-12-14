@@ -6,7 +6,5 @@ on:
 
 jobs:
   test:
-    uses: Zero65Tech/github-workflows/.github/workflows/build-and-test.yaml@master
-  commit:
-    uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
+    uses: Zero65Tech/github-workflows/.github/workflows/build-test-commit.yaml@master
   
