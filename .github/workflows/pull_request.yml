@@ -1,0 +1,9 @@
+name: Zero65Tech
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+
+jobs:
+  build:
+    uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master

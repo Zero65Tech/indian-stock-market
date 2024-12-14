@@ -1,0 +1,12 @@
+name: Zero65Tech
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    uses: Zero65Tech/github-workflows/.github/workflows/npm-publish.yaml@master
+    secrets:
+      NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
