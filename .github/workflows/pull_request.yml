@@ -5,5 +5,8 @@ on:
     types: [ opened, synchronize ]
 
 jobs:
-  build:
-    uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
+  test:
+    uses: Zero65Tech/github-workflows/.github/workflows/build-test-commit.yaml@master
+    with:
+      NODE_VERSION: '22' # 22.12.0
+  
