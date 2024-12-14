@@ -24,11 +24,11 @@ const infoTestCases = [
   // FO · PE & CE
 
   [ "ITC23NOV432.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 432.5, type: "PE" } ],
-  [ "ITC23NOV435PE",   { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435  , type: "PE" } ],
+  [ "ITC23NOV435PE",   { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435, type: "PE" } ],
   [ "ITC23NOV437.5PE", { script: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 437.5, type: "PE" } ],
 
   [ "WIPRO23NOV397.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "CE" } ],
-  [ "WIPRO23NOV400CE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400  , type: "CE" } ],
+  [ "WIPRO23NOV400CE",   { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400, type: "CE" } ],
   [ "WIPRO23NOV402.5CE", { script: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "CE" } ],
 
   [ "NIFTY23D0720000CE", { script: "NIFTY", exp: "23D07", expiry: "2023-12-07", strike: 20000, type: "CE" } ], 
@@ -49,7 +49,7 @@ const infoTestCases = [
 ];
 
 describe(".info(symbol)", () => {
-  for (let [symbol, output] of infoTestCases)
+  for(let [symbol, output] of infoTestCases)
     test(symbol, () => expect(info(symbol)).toStrictEqual(output));
 });
 
@@ -90,7 +90,7 @@ for(const [ dateTime, bool1, bool2, bool3, bool4 ] of dateTimeTestCases) {
 
     beforeAll(() => jest.useFakeTimers({ now: new Date(dateTime) }));
 
-    test('.isHoliday(dateStr)', () => expect(isHoliday(dateTime.substring(0,10))).toBe(bool1));
+    test('.isHoliday(dateStr)', () => expect(isHoliday(dateTime.substring(0, 10))).toBe(bool1));
 
     test('.isHoliday()', () => expect(isHoliday()).toBe(bool1));
     test('.isOpen()',    () => expect(isOpen())   .toBe(bool2));

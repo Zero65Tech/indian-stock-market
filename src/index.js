@@ -14,7 +14,7 @@ function monthlyExpiry(yy, mon, weekday) {
     dd--;
 
   while(true) {
-    let date = `${ yyyy }-${ String(mm + 1).padStart(2,'0') }-${ String(dd).padStart(2,'0') }`;
+    let date = `${ yyyy }-${ String(mm + 1).padStart(2, '0') }-${ String(dd).padStart(2, '0') }`;
     if(!holidays[yyyy][mm + 1].includes(dd))
       return date;
     dd--;
@@ -41,7 +41,7 @@ exports.info = (symbol) => {
 
   // OPT - Monthly Expiry
 
-  match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})([\d\.]+)(PE|CE)$/);
+  match = symbol.match(/^(\S+?)(\d{2})([A-Z]{3})([\d.]+)(PE|CE)$/);
   if(match) {
     let script = match[1];
     let expiry = monthlyExpiry(match[2], match[3], script == 'FINNIFTY' ? 2 : 4);
@@ -50,7 +50,7 @@ exports.info = (symbol) => {
 
   // OPT - Weekly Expiry
 
-  match = symbol.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d\.]+)(PE|CE)$/);
+  match = symbol.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d.]+)(PE|CE)$/);
   if(match) {
     let script = match[1];
     let expiry = weeklyExpiry(match[2], match[3], match[4]);
