@@ -5,5 +5,3 @@ on:
 jobs:
   build-and-commit:
     uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
-
-    
