@@ -8,5 +8,5 @@ jobs:
   test:
     uses: Zero65Tech/github-workflows/.github/workflows/build-test-commit.yaml@master
     with:
-      node_version: 18
+      node_version: 22
   
