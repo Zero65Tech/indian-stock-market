@@ -5,5 +5,5 @@ on:
     types: [ opened, synchronize ]
 
 jobs:
-  build-and-commit:
+  build:
     uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
