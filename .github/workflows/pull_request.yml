@@ -1,3 +1,5 @@
+name: Build and Commit
+
 on:
   pull_request:
     types: [ opened, synchronize ]
