@@ -8,4 +8,5 @@ jobs:
   build:
     uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
   test:
+    needs: build
     uses: Zero65Tech/github-workflows/.github/workflows/npm-test.yaml@master
