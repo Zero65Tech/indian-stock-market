@@ -3,6 +3,8 @@
 
 This utility provides functions to manage and query information related to trading schedules, market openings, and expiries for Indian Stock Market. The utility is written in JavaScript and can be used in Node.js environments.
 
+
+
 ## Features
 
 - **Market Status:** Determine whether the market is currently open or closed.
