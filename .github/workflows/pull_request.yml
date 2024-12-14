@@ -5,8 +5,8 @@ on:
     types: [ opened, synchronize ]
 
 jobs:
-  build:
-    uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
   test:
-    needs: build
-    uses: Zero65Tech/github-workflows/.github/workflows/npm-test.yaml@master
+    uses: Zero65Tech/github-workflows/.github/workflows/build-and-test.yaml@master
+  commit:
+    uses: Zero65Tech/github-workflows/.github/workflows/build-and-commit.yaml@master
+  
