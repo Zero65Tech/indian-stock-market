@@ -1,4 +1,4 @@
-name: Build & Commit
+name: Zero65Tech
 
 on:
   pull_request:

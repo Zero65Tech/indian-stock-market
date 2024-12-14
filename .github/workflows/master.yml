@@ -1,3 +1,5 @@
+name: Zero65Tech
+
 on:
   push:
     branches:
