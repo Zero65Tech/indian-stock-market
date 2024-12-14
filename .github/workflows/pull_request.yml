@@ -1,4 +1,4 @@
-name: Build and Commit
+name: Build & Commit
 
 on:
   pull_request:
