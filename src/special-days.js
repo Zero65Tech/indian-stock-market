@@ -26,5 +26,4 @@ module.exports = [
   '2024-03-02', // Intraday switch-over to Disaster Recovery Site
   '2024-05-18', // Intraday switch-over to Disaster Recovery Site
   '2024-11-01', // Muhurat Trading
-  '2024-12-14', // Testing
 ]
