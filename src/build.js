@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-const holidays    = require("../src/holidays.js");
-const specialDays = require("../src/special-days.js");
+const holidays    = require("./holidays.js");
+const specialDays = require("./special-days.js");
 
 let minified = {};
 
