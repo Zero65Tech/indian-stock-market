@@ -59,9 +59,9 @@ const foInfoTestCases = [
 
   // EQ
 
-  [ "RELIANCE", null], // Ends with "CE"
-  [ "TCS",      null],
-  [ "WIPRO",    null],
+  [ "RELIANCE", null ], // Ends with "CE"
+  [ "TCS",      null ],
+  [ "WIPRO",    null ],
 
   // FO · FUT
 
@@ -101,7 +101,7 @@ const foInfoTestCases = [
 
 ];
 
-describe(".info(symbol)", () => {
+describe(".foInfo(symbol)", () => {
   for(let [symbol, output] of foInfoTestCases)
     test(symbol, () => expect(foInfo(symbol)).toStrictEqual(output));
 });
