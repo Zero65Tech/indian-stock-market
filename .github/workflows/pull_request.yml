@@ -1,4 +1,4 @@
-name: build & test
+name: Zero65Tech
 
 on:
   pull_request:
