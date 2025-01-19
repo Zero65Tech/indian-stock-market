@@ -19,7 +19,7 @@ function monthlyExpiry(yy, mon, weekday) {
       return date;
     dd--;
   }
-  
+
 }
 
 function weeklyExpiry(yy, m, dd) {
@@ -164,12 +164,12 @@ exports.isHoliday = (date = new Date()) => {
       && specialDays[yyyy][mm] !== undefined
       && specialDays[yyyy][mm].includes(dd))
     return false;
-  
+
   if(date.getUTCDay() < 1 || date.getUTCDay() > 5)
     return true;
-  
+
   return holidays[yyyy] !== undefined
       && holidays[yyyy][mm] !== undefined
       && holidays[yyyy][mm].includes(dd);
-  
+
 };
