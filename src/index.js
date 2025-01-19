@@ -13,11 +13,10 @@ function monthlyExpiry(yy, mon, weekday) {
   while(new Date(yyyy, mm, dd).getDay() != weekday)
     dd--;
 
-  while(true) {
+  for(; dd >= 1; dd--) {
     const date = `${ yyyy }-${ String(mm + 1).padStart(2, '0') }-${ String(dd).padStart(2, '0') }`;
-    if(!holidays[yyyy][mm + 1].includes(dd))
+    if(holidays[yyyy] === undefined || holidays[yyyy][mm + 1] === undefined || !holidays[yyyy][mm + 1].includes(dd))
       return date;
-    dd--;
   }
 
 }
