@@ -13,13 +13,12 @@ function monthlyExpiry(yy, mon, weekday) {
   while(new Date(yyyy, mm, dd).getDay() != weekday)
     dd--;
 
-  while(true) {
+  for(; dd >= 1; dd--) {
     const date = `${ yyyy }-${ String(mm + 1).padStart(2, '0') }-${ String(dd).padStart(2, '0') }`;
-    if(!holidays[yyyy][mm + 1].includes(dd))
+    if(holidays[yyyy] === undefined || holidays[yyyy][mm + 1] === undefined || !holidays[yyyy][mm + 1].includes(dd))
       return date;
-    dd--;
   }
-  
+
 }
 
 function weeklyExpiry(yy, m, dd) {
@@ -164,12 +163,12 @@ exports.isHoliday = (date = new Date()) => {
       && specialDays[yyyy][mm] !== undefined
       && specialDays[yyyy][mm].includes(dd))
     return false;
-  
+
   if(date.getUTCDay() < 1 || date.getUTCDay() > 5)
     return true;
-  
+
   return holidays[yyyy] !== undefined
       && holidays[yyyy][mm] !== undefined
       && holidays[yyyy][mm].includes(dd);
-  
+
 };

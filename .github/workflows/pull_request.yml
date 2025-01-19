@@ -9,4 +9,8 @@ jobs:
     uses: Zero65Tech/github-workflows/.github/workflows/build-test-commit.yaml@master
     with:
       NODE_VERSION: '22' # 22.12.0
-  
+  Lint:
+    needs: Test
+    uses: Zero65Tech/github-workflows/.github/workflows/lint-and-commit.yaml@master
+    with:
+      NODE_VERSION: '22' # 22.12.0
