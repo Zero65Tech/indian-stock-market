@@ -1,5 +1,5 @@
 .github/
 src/holidays.js
 src/special-days.js
-build/
+src/build.js
 test/
