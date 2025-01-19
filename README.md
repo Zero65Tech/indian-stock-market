@@ -60,6 +60,16 @@ console.log(closed); // true or false
 Checks if the given date is a market holiday. If no date is provided, it checks for today.
 
 ```javascript
+const holiday = ism.isHoliday();
+console.log(holiday); // true or false
+```
+
+```javascript
+const holiday = ism.isHoliday('2021-10-02');
+console.log(holiday); // true or false
+```
+
+```javascript
 const holiday = ism.isHoliday(new Date('2021-10-02'));
 console.log(holiday); // true or false
 ```
