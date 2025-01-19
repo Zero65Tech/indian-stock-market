@@ -29,7 +29,7 @@ function weeklyExpiry(yy, m, dd) {
 
 exports.info = (symbol) => {
 
-  console.warn('.info() is deprecated. Use .foInfo() instead.');
+  console.warn('.info() is deprecated. Use .fo() instead.');
 
   // FUT - Monthly Expiry (only)
 
@@ -64,7 +64,7 @@ exports.info = (symbol) => {
 
 };
 
-exports.foInfo = (name) => {
+exports.fo = (name) => {
 
   // FUT - Monthly Expiry (only)
 

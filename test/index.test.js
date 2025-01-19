@@ -1,4 +1,4 @@
-const { info, foInfo, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index.js')
+const { info, fo, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index.js')
 
 
 
@@ -55,7 +55,7 @@ describe(".info(symbol)", () => {
 
 
 
-const foInfoTestCases = [
+const foTestCases = [
 
   // EQ
 
@@ -101,9 +101,9 @@ const foInfoTestCases = [
 
 ];
 
-describe(".foInfo(symbol)", () => {
-  for(let [symbol, output] of foInfoTestCases)
-    test(symbol, () => expect(foInfo(symbol)).toStrictEqual(output));
+describe(".fo(symbol)", () => {
+  for(let [symbol, output] of foTestCases)
+    test(symbol, () => expect(fo(symbol)).toStrictEqual(output));
 });
 
 
