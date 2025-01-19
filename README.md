@@ -13,7 +13,7 @@ npm install @zero65tech/indian-stock-market
 ### Importing the package
 
 ```javascript
-const stockMarket = require('@zero65tech/indian-stock-market');
+const ism = require('@zero65tech/indian-stock-market');
 ```
 
 ### Functions
@@ -27,7 +27,7 @@ Deprecated. Use `foInfo(name)` instead.
 Returns information about the futures or options contract.
 
 ```javascript
-const info = stockMarket.foInfo('NIFTY21OCTFUT');
+const info = ism.foInfo('NIFTY21OCTFUT');
 console.log(info);
 // { symbol: 'NIFTY', exp: '21OCT', expiry: '2021-10-28', type: 'FUT' }
 ```
@@ -37,7 +37,7 @@ console.log(info);
 Checks if the market is currently open.
 
 ```javascript
-const open = stockMarket.isOpen();
+const open = ism.isOpen();
 console.log(open); // true or false
 ```
 
@@ -46,7 +46,7 @@ console.log(open); // true or false
 Checks if the market has opened today.
 
 ```javascript
-const opened = stockMarket.hasOpened();
+const opened = ism.hasOpened();
 console.log(opened); // true or false
 ```
 
@@ -55,7 +55,7 @@ console.log(opened); // true or false
 Checks if the market has closed today.
 
 ```javascript
-const closed = stockMarket.hasClosed();
+const closed = ism.hasClosed();
 console.log(closed); // true or false
 ```
 
@@ -64,7 +64,7 @@ console.log(closed); // true or false
 Checks if the given date is a market holiday. If no date is provided, it checks for today.
 
 ```javascript
-const holiday = stockMarket.isHoliday(new Date('2021-10-02'));
+const holiday = ism.isHoliday(new Date('2021-10-02'));
 console.log(holiday); // true or false
 ```
 
