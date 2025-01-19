@@ -18,10 +18,6 @@ const ism = require('@zero65tech/indian-stock-market');
 
 ### Functions
 
-#### `info(symbol)`
-
-Deprecated. Use `foInfo(name)` instead.
-
 #### `foInfo(name)`
 
 Returns information about the futures or options contract.
