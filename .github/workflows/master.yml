@@ -1,4 +1,4 @@
-name: Zero65Tech
+name: npm publish
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  publish:
+  npm-publish:
     uses: Zero65Tech/github-workflows/.github/workflows/npm-publish.yaml@master
     secrets:
       NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
