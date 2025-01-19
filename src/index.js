@@ -1,6 +1,6 @@
 const holidays    = require("./holidays.json");
 const specialDays = require("./special-days.json");
-const specialday  = new Date("2024-11-01").getTime() / 1000 / 60 / 60 / 24; // GMT
+const specialday  = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // GMT
 
 
 
@@ -105,7 +105,7 @@ exports.hasClosed = () => {
     return false;
 
   let [day, hrs] = istDayAndHr(date);
-  if(day == specialday)
+  if(day === specialday)
     return hrs >= 19.25;
   else
     return hrs >= 15.5;
@@ -125,16 +125,16 @@ exports.isHoliday = (date = new Date()) => {
   let mm   = date.getUTCMonth() + 1;
   let dd   = date.getUTCDate();
 
-  if(specialDays[yyyy] != undefined
-      && specialDays[yyyy][mm] != undefined
+  if(specialDays[yyyy] !== undefined
+      && specialDays[yyyy][mm] !== undefined
       && specialDays[yyyy][mm].includes(dd))
     return false;
   
   if(date.getUTCDay() < 1 || date.getUTCDay() > 5)
     return true;
   
-  return holidays[yyyy] != undefined
-      && holidays[yyyy][mm] != undefined
+  return holidays[yyyy] !== undefined
+      && holidays[yyyy][mm] !== undefined
       && holidays[yyyy][mm].includes(dd);
   
 };
