@@ -26,6 +26,7 @@ fs.writeFileSync('src/holidays.json', JSON.stringify(minified));
 minified = {};
 
 for(let date of specialDays) {
+
   let [ year, month, day ] = date.split('-');
   year  = parseInt(year);
   month = parseInt(month);
@@ -35,6 +36,7 @@ for(let date of specialDays) {
   minified[year][month] = minified[year][month] || [];
 
   minified[year][month].push(day);
+
 }
 
 fs.writeFileSync('src/special-days.json', JSON.stringify(minified));
