@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  npm-publish:
+  Publish:
     uses: Zero65Tech/github-workflows/.github/workflows/npm-publish.yaml@master
     secrets:
       NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
