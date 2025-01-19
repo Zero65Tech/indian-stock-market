@@ -8,7 +8,7 @@ function monthlyExpiry(yy, mon, weekday) {
 
   const yyyy = 2000 + parseInt(yy);
   const mm = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", ].indexOf(mon);
-  const dd = new Date(yyyy, mm + 1, 0).getDate(); // Last day of the month
+  let dd = new Date(yyyy, mm + 1, 0).getDate(); // Last day of the month
 
   while(new Date(yyyy, mm, dd).getDay() != weekday)
     dd--;
