@@ -1,9 +1,11 @@
+name: build & test
+
 on:
   pull_request:
     types: [ opened, synchronize ]
 
 jobs:
-  build-test-commit:
+  job:
     uses: Zero65Tech/github-workflows/.github/workflows/build-test-commit.yaml@master
     with:
       NODE_VERSION: '22' # 22.12.0
