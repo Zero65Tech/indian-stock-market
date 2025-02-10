@@ -4,6 +4,15 @@ const specialday  = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // G
 
 
 
+exports.eq = (name) => {
+  const match = name.match(/^(.*?)-([A-Z]{1,2})$/);
+  return match
+      ? { symbol: match[1], series: match[2] }
+      : { symbol: name, series: null };
+}
+
+
+
 function monthlyExpiry(yy, mon, weekday) {
 
   const yyyy = 2000 + parseInt(yy);
