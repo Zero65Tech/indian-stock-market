@@ -65,45 +65,45 @@ const foTestCases = [
 
   // FO · FUT
 
-  [ "RELIANCE23JUNFUT", { symbol: "RELIANCE", exp: "23JUN", expiry:"2023-06-28", type: "FUT" } ], // Wednesday (Thursday Holiday)
-  [ "RELIANCE23SEPFUT", { symbol: "RELIANCE", exp: "23SEP", expiry:"2023-09-28", type: "FUT" } ],
-  [ "RELIANCE23NOVFUT", { symbol: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-  [ "RELIANCE23DECFUT", { symbol: "RELIANCE", exp: "23DEC", expiry:"2023-12-28", type: "FUT" } ],
+  [ "RELIANCE23JUNFUT", { symbol: "RELIANCE", scrip: "RELIANCE", exp: "23JUN", expiry:"2023-06-28", type: "FUT" } ], // Wednesday (Thursday Holiday)
+  [ "RELIANCE23SEPFUT", { symbol: "RELIANCE", scrip: "RELIANCE", exp: "23SEP", expiry:"2023-09-28", type: "FUT" } ],
+  [ "RELIANCE23NOVFUT", { symbol: "RELIANCE", scrip: "RELIANCE", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+  [ "RELIANCE23DECFUT", { symbol: "RELIANCE", scrip: "RELIANCE", exp: "23DEC", expiry:"2023-12-28", type: "FUT" } ],
 
-  [ "NIFTY23NOVFUT",     { symbol: "NIFTY",     exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-  [ "BANKNIFTY23NOVFUT", { symbol: "BANKNIFTY", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
-  [ "FINNIFTY23NOVFUT",  { symbol: "FINNIFTY",  exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
+  [ "NIFTY23NOVFUT",     { symbol: "NIFTY",     scrip: "NIFTY",     exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+  [ "BANKNIFTY23NOVFUT", { symbol: "BANKNIFTY", scrip: "BANKNIFTY", exp: "23NOV", expiry:"2023-11-30", type: "FUT" } ],
+  [ "FINNIFTY23NOVFUT",  { symbol: "FINNIFTY",  scrip: "FINNIFTY",  exp: "23NOV", expiry:"2023-11-28", type: "FUT" } ],
 
   // FO · PE & CE
 
-  [ "ITC23NOV432.5PE", { symbol: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 432.5, type: "PE" } ],
-  [ "ITC23NOV435PE",   { symbol: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435,   type: "PE" } ],
-  [ "ITC23NOV437.5PE", { symbol: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 437.5, type: "PE" } ],
+  [ "ITC23NOV432.5PE", { symbol: "ITC", scrip: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 432.5, type: "PE" } ],
+  [ "ITC23NOV435PE",   { symbol: "ITC", scrip: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 435,   type: "PE" } ],
+  [ "ITC23NOV437.5PE", { symbol: "ITC", scrip: "ITC", exp: "23NOV", expiry:"2023-11-30", strike: 437.5, type: "PE" } ],
 
-  [ "WIPRO23NOV397.5CE", { symbol: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "CE" } ],
-  [ "WIPRO23NOV400CE",   { symbol: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400,   type: "CE" } ],
-  [ "WIPRO23NOV402.5CE", { symbol: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "CE" } ],
+  [ "WIPRO23NOV400CE",   { symbol: "WIPRO", scrip: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 400,   type: "CE" } ],
+  [ "WIPRO23NOV397.5CE", { symbol: "WIPRO", scrip: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 397.5, type: "CE" } ],
+  [ "WIPRO23NOV402.5CE", { symbol: "WIPRO", scrip: "WIPRO", exp: "23NOV", expiry:"2023-11-30", strike: 402.5, type: "CE" } ],
 
-  [ "NIFTY23D0720000CE", { symbol: "NIFTY", exp: "23D07", expiry: "2023-12-07", strike: 20000, type: "CE" } ],
-  [ "NIFTY23D1420000CE", { symbol: "NIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ],
-  [ "NIFTY23D2120000CE", { symbol: "NIFTY", exp: "23D21", expiry: "2023-12-21", strike: 20000, type: "CE" } ],
-  [ "NIFTY23DEC20000CE", { symbol: "NIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 20000, type: "CE" } ],
+  [ "NIFTY23D0720000CE", { symbol: "NIFTY", scrip: "NIFTY", exp: "23D07", expiry: "2023-12-07", strike: 20000, type: "CE" } ],
+  [ "NIFTY23D1420000CE", { symbol: "NIFTY", scrip: "NIFTY", exp: "23D14", expiry: "2023-12-14", strike: 20000, type: "CE" } ],
+  [ "NIFTY23D2120000CE", { symbol: "NIFTY", scrip: "NIFTY", exp: "23D21", expiry: "2023-12-21", strike: 20000, type: "CE" } ],
+  [ "NIFTY23DEC20000CE", { symbol: "NIFTY", scrip: "NIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 20000, type: "CE" } ],
 
-  [ "BANKNIFTY23D0645000CE", { symbol: "BANKNIFTY", exp: "23D06", expiry: "2023-12-06", strike: 45000, type: "CE" } ],
-  [ "BANKNIFTY23D1345000CE", { symbol: "BANKNIFTY", exp: "23D13", expiry: "2023-12-13", strike: 45000, type: "CE" } ],
-  [ "BANKNIFTY23D2045000CE", { symbol: "BANKNIFTY", exp: "23D20", expiry: "2023-12-20", strike: 45000, type: "CE" } ],
-  [ "BANKNIFTY23DEC45000CE", { symbol: "BANKNIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23D0645000CE", { symbol: "BANKNIFTY", scrip: "BANKNIFTY", exp: "23D06", expiry: "2023-12-06", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23D1345000CE", { symbol: "BANKNIFTY", scrip: "BANKNIFTY", exp: "23D13", expiry: "2023-12-13", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23D2045000CE", { symbol: "BANKNIFTY", scrip: "BANKNIFTY", exp: "23D20", expiry: "2023-12-20", strike: 45000, type: "CE" } ],
+  [ "BANKNIFTY23DEC45000CE", { symbol: "BANKNIFTY", scrip: "BANKNIFTY", exp: "23DEC", expiry: "2023-12-28", strike: 45000, type: "CE" } ],
 
-  [ "FINNIFTY23D0520000CE", { symbol: "FINNIFTY", exp: "23D05", expiry: "2023-12-05", strike: 20000, type: "CE" } ],
-  [ "FINNIFTY23D1220000CE", { symbol: "FINNIFTY", exp: "23D12", expiry: "2023-12-12", strike: 20000, type: "CE" } ],
-  [ "FINNIFTY23D1920000CE", { symbol: "FINNIFTY", exp: "23D19", expiry: "2023-12-19", strike: 20000, type: "CE" } ],
-  [ "FINNIFTY23DEC20000CE", { symbol: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23D0520000CE", { symbol: "FINNIFTY", scrip: "FINNIFTY", exp: "23D05", expiry: "2023-12-05", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23D1220000CE", { symbol: "FINNIFTY", scrip: "FINNIFTY", exp: "23D12", expiry: "2023-12-12", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23D1920000CE", { symbol: "FINNIFTY", scrip: "FINNIFTY", exp: "23D19", expiry: "2023-12-19", strike: 20000, type: "CE" } ],
+  [ "FINNIFTY23DEC20000CE", { symbol: "FINNIFTY", scrip: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ],
 
 ];
 
-describe(".fo(symbol)", () => {
-  for(let [symbol, output] of foTestCases)
-    test(symbol, () => expect(fo(symbol)).toStrictEqual(output));
+describe(".fo(name)", () => {
+  for(let [name, output] of foTestCases)
+    test(name, () => expect(fo(name)).toStrictEqual(output));
 });
 
 

@@ -7,8 +7,8 @@ const specialday  = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // G
 exports.eq = (name) => {
   const match = name.match(/^(.*?)-([A-Z]{1,2})$/);
   return match
-    ? { symbol: match[1], series: match[2] }
-    : { symbol: name, series: null };
+    ? { symbol: match[1], scrip: match[1], series: match[2] }
+    : { symbol: name,     scrip: name,     series: null };
 }
 
 
@@ -79,27 +79,27 @@ exports.fo = (name) => {
 
   let match = name.match(/^(\S+?)(\d{2})([A-Z]{3})FUT$/);
   if(match) {
-    let symbol = match[1];
-    let expiry = monthlyExpiry(match[2], match[3], symbol == 'FINNIFTY' ? 2 : 4);
-    return { symbol, exp: match[2] + match[3], expiry, type: "FUT" };
+    let scrip = match[1];
+    let expiry = monthlyExpiry(match[2], match[3], scrip == 'FINNIFTY' ? 2 : 4);
+    return { symbol: scrip, scrip, exp: match[2] + match[3], expiry, type: "FUT" };
   }
 
   // OPT - Monthly Expiry
 
   match = name.match(/^(\S+?)(\d{2})([A-Z]{3})([\d.]+)(PE|CE)$/);
   if(match) {
-    let symbol = match[1];
-    let expiry = monthlyExpiry(match[2], match[3], symbol == 'FINNIFTY' ? 2 : 4);
-    return { symbol, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
+    let scrip = match[1];
+    let expiry = monthlyExpiry(match[2], match[3], scrip == 'FINNIFTY' ? 2 : 4);
+    return { symbol: scrip, scrip, exp: match[2] + match[3], expiry, strike: parseFloat(match[4]), type: match[5] };
   }
 
   // OPT - Weekly Expiry
 
   match = name.match(/^(NIFTY|BANKNIFTY|FINNIFTY)(\d{2})(\w{1})(\d{2})([\d.]+)(PE|CE)$/);
   if(match) {
-    let symbol = match[1];
+    let scrip = match[1];
     let expiry = weeklyExpiry(match[2], match[3], match[4]);
-    return { symbol, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
+    return { symbol: scrip, scrip, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
   }
 
   return null;
