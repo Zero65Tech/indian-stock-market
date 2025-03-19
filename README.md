@@ -25,7 +25,7 @@ Returns information about the futures or options contract.
 ```javascript
 const info = ism.fo('NIFTY21OCTFUT');
 console.log(info);
-// { symbol: 'NIFTY', exp: '21OCT', expiry: '2021-10-28', type: 'FUT' }
+// { scrip: 'NIFTY', exp: '21OCT', expiry: '2021-10-28', type: 'FUT' }
 ```
 
 #### `isOpen()`
