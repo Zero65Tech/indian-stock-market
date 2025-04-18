@@ -99,6 +99,13 @@ const foTestCases = [
   [ "FINNIFTY23D1920000CE", { symbol: "FINNIFTY", scrip: "FINNIFTY", exp: "23D19", expiry: "2023-12-19", strike: 20000, type: "CE" } ],
   [ "FINNIFTY23DEC20000CE", { symbol: "FINNIFTY", scrip: "FINNIFTY", exp: "23DEC", expiry: "2023-12-26", strike: 20000, type: "CE" } ],
 
+  [ "MIDCPNIFTY2410110675CE", { symbol: "MIDCPNIFTY", scrip: "MIDCPNIFTY", exp: "24101", expiry: "2024-01-01", strike: 10675, type: "CE" } ],
+  [ "MIDCPNIFTY24JAN10675CE", { symbol: "MIDCPNIFTY", scrip: "MIDCPNIFTY", exp: "24JAN", expiry: "2024-01-29", strike: 10675, type: "CE" } ],
+  [ "MIDCPNIFTY2412210675PE", { symbol: "MIDCPNIFTY", scrip: "MIDCPNIFTY", exp: "24122", expiry: "2024-01-20", strike: 10675, type: "PE" } ],
+
+  [ "ITC25JANFUT", { symbol: "ITC", scrip: "ITC", exp: "25JAN", expiry:"2025-01-30", type: "FUT" } ],
+  [ "ITC25FEBFUT", { symbol: "ITC", scrip: "ITC", exp: "25FEB", expiry:"2025-02-27", type: "FUT" } ],
+  [ "ITC25MARFUT", { symbol: "ITC", scrip: "ITC", exp: "25MAR", expiry:"2025-03-27", type: "FUT" } ],
 ];
 
 describe(".fo(name)", () => {
