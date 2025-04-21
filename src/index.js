@@ -42,7 +42,7 @@ function weeklyExpiry(yy, m, dd) {
   const mm = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
   let day = parseInt(dd);
 
-  for (; day >= 1; day--) {
+  for(; day >= 1; day--) {
     const dateObj = new Date(yyyy, mm, day);
     const dayOfWeek = dateObj.getDay();
     const date = `${ yyyy }-${ String(mm + 1).padStart(2, "0") }-${ String(day).padStart(2, "0") }`;
@@ -51,7 +51,7 @@ function weeklyExpiry(yy, m, dd) {
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
     const isSpecial = specialDays[yyyy] !== undefined && specialDays[yyyy][mm + 1] !== undefined && specialDays[yyyy][mm + 1].includes(day);
 
-    if (!isHoliday && (!isWeekend || isSpecial)) {
+    if(!isHoliday && (!isWeekend || isSpecial)) {
       return date;
     }
   }
@@ -62,7 +62,7 @@ function monthlyExpiryType2(yy, m, dd) {
   const mm = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
   let day = parseInt(dd);
 
-  for (; day >= 1; day--) {
+  for(; day >= 1; day--) {
     const dateObj = new Date(yyyy, mm, day);
     const dayOfWeek = dateObj.getDay();
     const date = `${ yyyy }-${ String(mm + 1).padStart(2, "0") }-${ String(day).padStart(2, "0") }`;
@@ -71,7 +71,7 @@ function monthlyExpiryType2(yy, m, dd) {
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
     const isSpecial = specialDays[yyyy] !== undefined && specialDays[yyyy][mm + 1] !== undefined && specialDays[yyyy][mm + 1].includes(day);
 
-    if (!isHoliday && (!isWeekend || isSpecial)) {
+    if(!isHoliday && (!isWeekend || isSpecial)) {
       return date;
     }
   }
@@ -121,17 +121,17 @@ const expiryMap = {
   'BANKNIFTY': 3,
   'NIFTYNXT50': 5,
 
-   // BSE
-   'BANKEX': 1,
-   'SENSEX': 5,
+  // BSE
+  'BANKEX': 1,
+  'SENSEX': 5,
 }
 // Note : All monthly BankNifty contracts will expire on Wednesday after 1st MAR 2024. Before it, expiry was on Thursday. https://nsearchives.nseindia.com/content/circulars/FAOP60011.pdf
 
-const getweekday = (yyyy,mm,scrip) => {
-  if(scrip === 'BANKNIFTY' && yyyy < 2024 ) return 4; 
-  if(scrip === 'BANKNIFTY' && yyyy === 2024 && mm <= 1 ) return 4; 
-  if((['SENSEX50', 'BANKEX', 'SENSEX'].includes(scrip)) && yyyy >= 2025 ) return 2;
-  if(yyyy >= 2025 ) return 4;   // 2025 is year
+const getweekday = (yyyy, mm, scrip) => {
+  if(scrip === 'BANKNIFTY' && yyyy < 2024) return 4;
+  if(scrip === 'BANKNIFTY' && yyyy === 2024 && mm <= 1) return 4;
+  if((['SENSEX50', 'BANKEX', 'SENSEX'].includes(scrip)) && yyyy >= 2025) return 2;
+  if(yyyy >= 2025) return 4;   // 2025 is year
   return expiryMap[scrip] || 4;
 }
 
@@ -170,7 +170,7 @@ exports.fo = (name) => {
     return { symbol: scrip, scrip, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
   }
 
-  // BSE 
+  // BSE
 
   // FUT - Weekly Expiry
   match = name.match(/^(\S+?)(\d{2})(\w{1})(\d{2})FUT$/);
