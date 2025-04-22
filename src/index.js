@@ -57,26 +57,6 @@ function weeklyExpiry(yy, m, dd) {
   }
 }
 
-function monthlyExpiryType2(yy, m, dd) {
-  const yyyy = 2000 + parseInt(yy);
-  const mm = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', 'O', 'N', 'D' ].indexOf(m);
-  let day = parseInt(dd);
-
-  for (; day >= 1; day--) {
-    const dateObj = new Date(yyyy, mm, day);
-    const dayOfWeek = dateObj.getDay();
-    const date = `${ yyyy }-${ String(mm + 1).padStart(2, "0") }-${ String(day).padStart(2, "0") }`;
-
-    const isHoliday = holidays[yyyy] !== undefined && holidays[yyyy][mm + 1] !== undefined && holidays[yyyy][mm + 1].includes(day);
-    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-    const isSpecial = specialDays[yyyy] !== undefined && specialDays[yyyy][mm + 1] !== undefined && specialDays[yyyy][mm + 1].includes(day);
-
-    if (!isHoliday && (!isWeekend || isSpecial)) {
-      return date;
-    }
-  }
-}
-
 exports.info = (symbol) => {
 
   console.warn('.info() is deprecated. Use .fo() instead.');
@@ -176,7 +156,7 @@ exports.fo = (name) => {
   match = name.match(/^(\S+?)(\d{2})(\w{1})(\d{2})FUT$/);
   if(match) {
     let scrip = match[1];
-    let expiry = monthlyExpiryType2(match[2], match[3], match[4]);
+    let expiry = weeklyExpiry(match[2], match[3], match[4]);
     return { symbol: scrip, scrip, exp: match[2] + match[3] + match[4], expiry, type: "FUT" };
   }
 
@@ -189,7 +169,7 @@ exports.fo = (name) => {
     return { symbol: scrip, scrip, exp: match[2] + match[3] + match[4], expiry, strike: parseFloat(match[5]), type: match[6] };
   }
 
-  // Note: Single Stock derivative expiry shigt to second thursday of month. https://www.bseindia.com/markets/MarketInfo/DispNewNoticesCirculars.aspx?page=20240430-50
+  // Note: Single Stock derivative expiry shift to second thursday of month. https://www.bseindia.com/markets/MarketInfo/DispNewNoticesCirculars.aspx?page=20240430-50
 
 
   return null;
