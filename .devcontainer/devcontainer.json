@@ -1,5 +1,5 @@
 {
-  "dockerFile": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "postStartCommand": "npm update",
   "customizations": {
     "vscode": {
