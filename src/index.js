@@ -1,34 +1,63 @@
-import holidays from "./build/holidays.json";
-import specialDays from "./build/special-days.json";
-const specialday = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // GMT
+import HOLIDAYS from "./build/holidays.json";
+import SPECIAL_DAYS from "./build/special-days.json";
+
+const IST_OFFSET_MILLIS = 5.5 * 60 * 60 * 1000;
+const MAHURAT_DAY = "2025-10-21";
 
 function isHoliday(date = new Date()) {
-  if (typeof date == "object") {
-    date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-  } else if (typeof date == "string") {
-    date = new Date(date); // UTC
+  // Normalize input date
+  if (typeof date === "string") {
+    date = new Date(date);
+  } else if (date instanceof Date) {
+    // Apply IST offset
+    date = new Date(date.getTime() + IST_OFFSET_MILLIS);
+  } else {
+    throw new TypeError("Invalid date input");
   }
 
   let yyyy = date.getUTCFullYear();
   let mm = date.getUTCMonth() + 1;
   let dd = date.getUTCDate();
 
-  if (
-    specialDays[yyyy] !== undefined &&
-    specialDays[yyyy][mm] !== undefined &&
-    specialDays[yyyy][mm].includes(dd)
-  )
+  // Check special days first
+  if (SPECIAL_DAYS[yyyy]?.[mm]?.includes(dd)) {
     return false;
+  }
 
-  if (date.getUTCDay() < 1 || date.getUTCDay() > 5) {
+  // Check if weekend (Saturday=6, Sunday=0)
+  const dayOfWeek = date.getUTCDay();
+  if (dayOfWeek === 0 || dayOfWeek === 6) {
     return true;
   }
 
-  return (
-    holidays[yyyy] !== undefined &&
-    holidays[yyyy][mm] !== undefined &&
-    holidays[yyyy][mm].includes(dd)
-  );
+  // Check if holiday
+  return HOLIDAYS[yyyy]?.[mm]?.includes(dd) ?? false;
+}
+
+function isOpen(date = new Date()) {
+  if (isHoliday(date)) {
+    return false;
+  }
+
+  // Apply IST offset
+  date = new Date(date.getTime() + IST_OFFSET_MILLIS);
+
+  const dateStr = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
+  const hours = date.getUTCHours() + date.getUTCMinutes() / 60 + date.getUTCSeconds() / 3600;
+  if (dateStr === MAHURAT_DAY) {
+    return hours >= 18 && hours < 19.25;
+  } else {
+    return hours >= 9 && hours < 15.5;
+  }
+}
+
+// TODO
+
+const specialday = new Date(MAHURAT_DAY).getTime() / 1000 / 60 / 60 / 24; // UTC
+
+function _istDayAndHr(date) {
+  let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
+  return [Math.floor(hrs / 24), hrs % 24];
 }
 
 function eq(name) {
@@ -61,9 +90,9 @@ function monthlyExpiry(yy, mon, weekday) {
   for (; dd >= 1; dd--) {
     const date = `${yyyy}-${String(mm + 1).padStart(2, "0")}-${String(dd).padStart(2, "0")}`;
     if (
-      holidays[yyyy] === undefined ||
-      holidays[yyyy][mm + 1] === undefined ||
-      !holidays[yyyy][mm + 1].includes(dd)
+      HOLIDAYS[yyyy] === undefined ||
+      HOLIDAYS[yyyy][mm + 1] === undefined ||
+      !HOLIDAYS[yyyy][mm + 1].includes(dd)
     )
       return date;
   }
@@ -167,30 +196,11 @@ function fo(name) {
   return null;
 }
 
-function istDayAndHr(date) {
-  let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
-  return [Math.floor(hrs / 24), hrs % 24];
-}
-
-function isOpen() {
-  let date = new Date();
-  if (isHoliday(date)) {
-    return false;
-  }
-
-  let [day, hrs] = istDayAndHr(date);
-  if (day == specialday) {
-    return hrs >= 18 && hrs < 19.25;
-  } else {
-    return hrs >= 9 && hrs < 15.5;
-  }
-}
-
 function hasOpened() {
   let date = new Date();
   if (isHoliday(date)) return false;
 
-  let [day, hrs] = istDayAndHr(date);
+  let [day, hrs] = _istDayAndHr(date);
   if (day == specialday) return hrs >= 18;
   else return hrs >= 9;
 }
@@ -199,11 +209,11 @@ function hasClosed() {
   let date = new Date();
   if (isHoliday(date)) return false;
 
-  let [day, hrs] = istDayAndHr(date);
+  let [day, hrs] = _istDayAndHr(date);
   if (day === specialday) return hrs >= 19.25;
   else return hrs >= 15.5;
 }
 
 export default { eq, info, fo, isOpen, hasOpened, hasClosed, isHoliday };
 
-export { isHoliday as isISMHoliday };
+export { isHoliday as isISMHoliday, isOpen as isISMOpen };
