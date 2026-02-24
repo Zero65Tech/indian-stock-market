@@ -1,5 +1,11 @@
-.github/
-src/holidays.js
-src/special-days.js
-src/build.js
+.devcontainer/
+.vscode/
+src/config/
+src/build/index.js
 test/
+coverage/
+.gitignore
+.npmignore
+.prettierignore
+eslint.config.js
+prettier.config.js
