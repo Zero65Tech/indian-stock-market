@@ -3,6 +3,8 @@
   "name": "@zero65tech/indian-stock-market",
   "version": "6.0.0",
   "description": "Indian Stock Market Toolkit",
+  "private": true,
+  "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,10 +1,10 @@
-const holidays    = require("./holidays.json");
-const specialDays = require("./special-days.json");
+import holidays    from "./holidays.json";
+import specialDays from "./special-days.json";
 const specialday  = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // GMT
 
 
 
-exports.eq = (name) => {
+function eq(name) {
   const match = name.match(/^(.*?)-([A-Z]{1,2})$/);
   return match
     ? { symbol: match[1], scrip: match[1], series: match[2] }
@@ -36,7 +36,7 @@ function weeklyExpiry(yy, m, dd) {
   return `${ year }-${ String(mm + 1).padStart(2, "0") }-${ dd }`;
 }
 
-exports.info = (symbol) => {
+function info(symbol) {
 
   console.warn('.info() is deprecated. Use .fo() instead.');
 
@@ -73,7 +73,7 @@ exports.info = (symbol) => {
 
 };
 
-exports.fo = (name) => {
+function fo(name) {
 
   // FUT - Monthly Expiry (only)
 
@@ -113,10 +113,10 @@ function istDayAndHr(date) {
   return [ Math.floor(hrs / 24), hrs % 24 ];
 }
 
-exports.isOpen = () => {
+function isOpen() {
 
   let date = new Date();
-  if(exports.isHoliday(date))
+  if(isHoliday(date))
     return false;
 
   let [day, hrs] = istDayAndHr(date);
@@ -127,10 +127,10 @@ exports.isOpen = () => {
 
 };
 
-exports.hasOpened = () => {
+function hasOpened() {
 
   let date = new Date();
-  if(exports.isHoliday(date))
+  if(isHoliday(date))
     return false;
 
   let [day, hrs] = istDayAndHr(date);
@@ -141,10 +141,10 @@ exports.hasOpened = () => {
 
 };
 
-exports.hasClosed = () => {
+function hasClosed() {
 
   let date = new Date();
-  if(exports.isHoliday(date))
+  if(isHoliday(date))
     return false;
 
   let [day, hrs] = istDayAndHr(date);
@@ -157,12 +157,12 @@ exports.hasClosed = () => {
 
 
 
-exports.isHoliday = (date = new Date()) => {
+function isHoliday(date = new Date()) {
 
   if(typeof date == "object")
     date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
   else if(typeof date == "string")
-    date = new Date(date); // GMT
+    date = new Date(date); // UTC
 
   let yyyy = date.getUTCFullYear();
   let mm   = date.getUTCMonth() + 1;
@@ -181,3 +181,5 @@ exports.isHoliday = (date = new Date()) => {
       && holidays[yyyy][mm].includes(dd);
 
 };
+
+export default { eq, info, fo, isOpen, hasOpened, hasClosed, isHoliday };
