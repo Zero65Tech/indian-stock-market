@@ -2,7 +2,7 @@ import HOLIDAYS from "./build/holidays.json";
 import SPECIAL_DAYS from "./build/special-days.json";
 
 const IST_OFFSET_MILLIS = 5.5 * 60 * 60 * 1000;
-const MAHURAT_DAY = "2025-10-21";
+const MAHURAT_DAY = "2026-11-08";
 
 function isHoliday(date = new Date()) {
   // Normalize input date
