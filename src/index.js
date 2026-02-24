@@ -2,6 +2,35 @@ import holidays from "./build/holidays.json";
 import specialDays from "./build/special-days.json";
 const specialday = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // GMT
 
+function isHoliday(date = new Date()) {
+  if (typeof date == "object") {
+    date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
+  } else if (typeof date == "string") {
+    date = new Date(date); // UTC
+  }
+
+  let yyyy = date.getUTCFullYear();
+  let mm = date.getUTCMonth() + 1;
+  let dd = date.getUTCDate();
+
+  if (
+    specialDays[yyyy] !== undefined &&
+    specialDays[yyyy][mm] !== undefined &&
+    specialDays[yyyy][mm].includes(dd)
+  )
+    return false;
+
+  if (date.getUTCDay() < 1 || date.getUTCDay() > 5) {
+    return true;
+  }
+
+  return (
+    holidays[yyyy] !== undefined &&
+    holidays[yyyy][mm] !== undefined &&
+    holidays[yyyy][mm].includes(dd)
+  );
+}
+
 function eq(name) {
   const match = name.match(/^(.*?)-([A-Z]{1,2})$/);
   return match
@@ -145,11 +174,16 @@ function istDayAndHr(date) {
 
 function isOpen() {
   let date = new Date();
-  if (isHoliday(date)) return false;
+  if (isHoliday(date)) {
+    return false;
+  }
 
   let [day, hrs] = istDayAndHr(date);
-  if (day == specialday) return hrs >= 18 && hrs < 19.25;
-  else return hrs >= 9 && hrs < 15.5;
+  if (day == specialday) {
+    return hrs >= 18 && hrs < 19.25;
+  } else {
+    return hrs >= 9 && hrs < 15.5;
+  }
 }
 
 function hasOpened() {
@@ -170,28 +204,6 @@ function hasClosed() {
   else return hrs >= 15.5;
 }
 
-function isHoliday(date = new Date()) {
-  if (typeof date == "object") date = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-  else if (typeof date == "string") date = new Date(date); // UTC
-
-  let yyyy = date.getUTCFullYear();
-  let mm = date.getUTCMonth() + 1;
-  let dd = date.getUTCDate();
-
-  if (
-    specialDays[yyyy] !== undefined &&
-    specialDays[yyyy][mm] !== undefined &&
-    specialDays[yyyy][mm].includes(dd)
-  )
-    return false;
-
-  if (date.getUTCDay() < 1 || date.getUTCDay() > 5) return true;
-
-  return (
-    holidays[yyyy] !== undefined &&
-    holidays[yyyy][mm] !== undefined &&
-    holidays[yyyy][mm].includes(dd)
-  );
-}
-
 export default { eq, info, fo, isOpen, hasOpened, hasClosed, isHoliday };
+
+export { isHoliday as isISMHoliday };
