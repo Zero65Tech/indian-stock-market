@@ -1,5 +1,5 @@
-import holidays    from "./holidays.json";
-import specialDays from "./special-days.json";
+import holidays    from "./build/holidays.json";
+import specialDays from "./build/special-days.json";
 const specialday  = new Date("2025-10-21").getTime() / 1000 / 60 / 60 / 24; // GMT
 
 

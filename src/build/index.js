@@ -1,7 +1,7 @@
 import fs from "fs";
 
-import holidays    from "./holidays.js";
-import specialDays from "./special-days.js";
+import holidays    from "../config/holidays.js";
+import specialDays from "../config/special-days.js";
 
 let minified = {};
 
@@ -21,7 +21,7 @@ for(let dateArr of holidays) {
   }
 }
 
-fs.writeFileSync('src/holidays.json', JSON.stringify(minified));
+fs.writeFileSync('src/build/holidays.json', JSON.stringify(minified, null, 2));
 
 minified = {};
 
@@ -39,4 +39,4 @@ for(let date of specialDays) {
 
 }
 
-fs.writeFileSync('src/special-days.json', JSON.stringify(minified));
+fs.writeFileSync('src/build/special-days.json', JSON.stringify(minified, null, 2));
