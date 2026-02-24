@@ -5,8 +5,13 @@
   },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    ".env": ".env.*",
-    "package.json": "package-lock.json, eslint.config.js, prettier.config.js"
+    ".gitignore": ".prettierignore, .npmignore",
+    "package.json": "package-lock.json, eslint.config.js, prettier.config.js",
+    "README.md": "LICENSE"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
