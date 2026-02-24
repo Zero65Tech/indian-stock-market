@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   // 2012
   '2012-01-07',
   '2012-03-03',

@@ -1,7 +1,7 @@
-const fs = require("fs");
+import fs from "fs";
 
-const holidays    = require("./holidays.js");
-const specialDays = require("./special-days.js");
+import holidays    from "./holidays.js";
+import specialDays from "./special-days.js";
 
 let minified = {};
 
