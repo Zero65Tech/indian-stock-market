@@ -1,0 +1,12 @@
+{
+  "dockerFile": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "postStartCommand": "npm update",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
