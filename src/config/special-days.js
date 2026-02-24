@@ -29,4 +29,6 @@ export default [
   // 2025
   '2025-10-21', // Muhurat Trading
   '2025-02-01', // Budget Day
+  // 2026
+  '2026-02-01', // Budget Day
 ]
