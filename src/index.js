@@ -197,6 +197,8 @@ function fo(name) {
 }
 
 function hasOpened() {
+  console.warn(".hasOpened() is deprecated. Shall be removed eventually.");
+
   let date = new Date();
   if (isHoliday(date)) return false;
 
@@ -206,6 +208,8 @@ function hasOpened() {
 }
 
 function hasClosed() {
+  console.warn(".hasClosed() is deprecated. Shall be removed eventually.");
+
   let date = new Date();
   if (isHoliday(date)) return false;
 

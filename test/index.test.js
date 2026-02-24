@@ -1,4 +1,9 @@
-const { info, fo, isHoliday, isOpen, hasOpened, hasClosed } = require('../src/index.js')
+import { beforeAll, describe, expect, jest, test } from '@jest/globals';
+
+import { isISMHoliday, isISMOpen } from '../src/index.js';
+
+import app from '../src/index.js';
+const { fo, hasClosed, hasOpened, info } = app;
 
 
 
@@ -143,10 +148,10 @@ for(const [ dateTime, bool1, bool2, bool3, bool4 ] of dateTimeTestCases) {
 
     beforeAll(() => jest.useFakeTimers({ now: new Date(dateTime) }));
 
-    test('.isHoliday(dateStr)', () => expect(isHoliday(dateTime.substring(0, 10))).toBe(bool1));
+    test('.isISMHoliday(dateStr)', () => expect(isISMHoliday(dateTime.substring(0, 10))).toBe(bool1));
 
-    test('.isHoliday()', () => expect(isHoliday()).toBe(bool1));
-    test('.isOpen()',    () => expect(isOpen())   .toBe(bool2));
+    test('.isISMHoliday()', () => expect(isISMHoliday()).toBe(bool1));
+    test('.isISMOpen()',    () => expect(isISMOpen())   .toBe(bool2));
     test('.hasOpened()', () => expect(hasOpened()).toBe(bool3));
     test('.hasClosed()', () => expect(hasClosed()).toBe(bool4));
 
