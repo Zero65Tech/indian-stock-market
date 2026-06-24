@@ -1,7 +1,7 @@
 import fs from "fs";
 
-import holidays from "../config/holidays.js";
-import specialDays from "../config/special-days.js";
+import holidays from "./config/holidays.js";
+import specialDays from "./config/special-days.js";
 
 function minify(dates) {
   let minified = {};
