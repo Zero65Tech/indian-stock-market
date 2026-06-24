@@ -136,10 +136,10 @@ const dateTimeTestCases = [
   // Ram Temple Consecration
   [ '2024-01-22T12:00:00+05:30', true, false, false, false ],
 
-  // Special Day
-  [ '2025-10-21T17:59:59+05:30', false, false, false, false ],
-  [ '2025-10-21T18:00:00+05:30', false, true,  true,  false ],
-  [ '2025-10-21T19:15:00+05:30', false, false, true,  true  ],
+  // Mahurat Trading
+  [ '2026-11-08T17:59:59+05:30', false, false, false, false ],
+  [ '2026-11-08T18:00:00+05:30', false, true,  true,  false ],
+  [ '2026-11-08T19:15:00+05:30', false, false, true,  true  ],
 
 ]
 

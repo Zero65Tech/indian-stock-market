@@ -19,5 +19,5 @@ function minify(dates) {
   return minified;
 }
 
-fs.writeFileSync("src/build/holidays.json", JSON.stringify(minify(holidays)));
-fs.writeFileSync("src/build/special-days.json", JSON.stringify(minify(specialDays)));
+fs.writeFileSync("src/data/holidays.json", JSON.stringify(minify(holidays)));
+fs.writeFileSync("src/data/special-days.json", JSON.stringify(minify(specialDays)));

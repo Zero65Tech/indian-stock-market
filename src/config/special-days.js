@@ -27,8 +27,9 @@ export default [
   '2024-05-18', // Intraday switch-over to Disaster Recovery Site
   '2024-11-01', // Muhurat Trading
   // 2025
-  '2025-10-21', // Muhurat Trading
   '2025-02-01', // Budget Day
+  '2025-10-21', // Muhurat Trading
   // 2026
   '2026-02-01', // Budget Day
+  '2026-11-08', // Muhurat Trading
 ]

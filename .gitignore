@@ -1,2 +1,4 @@
+.claude/settings.json
+.npmrc
 node_modules/
 coverage/

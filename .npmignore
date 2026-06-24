@@ -1,7 +1,10 @@
 .devcontainer/
+.claude/
 .vscode/
-src/config/
-src/build/index.js
+.npmrc
+src/config/holidays.js
+src/config/special-days.js
+src/build.js
 test/
 coverage/
 .gitignore

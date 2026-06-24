@@ -1,8 +1,8 @@
-import HOLIDAYS from "./build/holidays.json";
-import SPECIAL_DAYS from "./build/special-days.json";
+import MARKET from "./config/market.js";
+import HOLIDAYS from "./data/holidays.json";
+import SPECIAL_DAYS from "./data/special-days.json";
 
 const IST_OFFSET_MILLIS = 5.5 * 60 * 60 * 1000;
-const MAHURAT_DAY = "2026-11-08";
 
 function isHoliday(date = new Date()) {
   // Normalize input date
@@ -44,16 +44,16 @@ function isOpen(date = new Date()) {
 
   const dateStr = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
   const hours = date.getUTCHours() + date.getUTCMinutes() / 60 + date.getUTCSeconds() / 3600;
-  if (dateStr === MAHURAT_DAY) {
-    return hours >= 18 && hours < 19.25;
+  if (dateStr === MARKET.muhuratDay) {
+    return hours >= MARKET.muhuratHours.open && hours < MARKET.muhuratHours.close;
   } else {
-    return hours >= 9 && hours < 15.5;
+    return hours >= MARKET.regularHours.open && hours < MARKET.regularHours.close;
   }
 }
 
 // TODO
 
-const specialday = new Date(MAHURAT_DAY).getTime() / 1000 / 60 / 60 / 24; // UTC
+const specialday = new Date(MARKET.muhuratDay).getTime() / 1000 / 60 / 60 / 24; // UTC
 
 function _istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
@@ -203,8 +203,8 @@ function hasOpened() {
   if (isHoliday(date)) return false;
 
   let [day, hrs] = _istDayAndHr(date);
-  if (day == specialday) return hrs >= 18;
-  else return hrs >= 9;
+  if (day == specialday) return hrs >= MARKET.muhuratHours.open;
+  else return hrs >= MARKET.regularHours.open;
 }
 
 function hasClosed() {
@@ -214,8 +214,8 @@ function hasClosed() {
   if (isHoliday(date)) return false;
 
   let [day, hrs] = _istDayAndHr(date);
-  if (day === specialday) return hrs >= 19.25;
-  else return hrs >= 15.5;
+  if (day === specialday) return hrs >= MARKET.muhuratHours.close;
+  else return hrs >= MARKET.regularHours.close;
 }
 
 export default { eq, info, fo, isOpen, hasOpened, hasClosed, isHoliday };
