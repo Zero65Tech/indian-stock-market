@@ -1,9 +1,12 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
   "postStartCommand": "npm update",
   "customizations": {
     "vscode": {
       "extensions": [
+        "openai.chatgpt",
+        "anthropic.claude-code",
+        "github.vscode-pull-request-github",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode"
       ]
