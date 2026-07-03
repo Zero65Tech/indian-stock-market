@@ -1,6 +1,6 @@
 import MARKET from "./config/market.js";
-import HOLIDAYS from "./data/holidays.json";
-import SPECIAL_DAYS from "./data/special-days.json";
+import HOLIDAYS from "./data/holidays.json" with { type: "json" };
+import SPECIAL_DAYS from "./data/special-days.json" with { type: "json" };
 
 const IST_OFFSET_MILLIS = 5.5 * 60 * 60 * 1000;
 
